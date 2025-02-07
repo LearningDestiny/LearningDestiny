@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 const referralsMap = new Map(); // { referrerId: { referrals: [], rewards } }
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 // Mock database for tracking user rewards (Replace with actual DB later)
 const userRewards = new Map(); // { userId: { rewards, redemptionHistory } }
