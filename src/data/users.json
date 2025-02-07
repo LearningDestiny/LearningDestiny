@@ -1,0 +1,28 @@
+[
+  {
+    "id": "user_1",
+    "name": "Amit",
+    "email": "amit@example.com",
+    "referralCode": "xyz789",
+    "referredBy": null,
+    "referrals": [
+      "user_2qsWbxb6g31Pug7rUOUQKYmkoOI"
+    ],
+    "rewards": 100,
+    "redemptionHistory": [],
+    "paymentCompleted": true
+  },
+  {
+    "id": "user_2qsWbxb6g31Pug7rUOUQKYmkoOI",
+    "name": "Khushi",
+    "email": "khushipatna0612@gmail.com",
+    "referralCode": "abc123",
+    "referredBy": "user_1",
+    "referrals": [
+      "user_1"
+    ],
+    "rewards": 100,
+    "redemptionHistory": [],
+    "paymentCompleted": true
+  }
+]

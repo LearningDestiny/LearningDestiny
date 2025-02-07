@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Software Development Internship",
+    "company": "Learning Destiny",
+    "stipend": "500Rs/month",
+    "imageUrl": "/SDIntern.png",
+    "description": "Join our team to work on exciting software projects and enhance your skills.",
+    "lastUpdated": "Last updated: September 2024",
+    "duration": "3 months"
+  },
+  {
+    "id": 2,
+    "title": "Data Analyst Internship",
+    "company": "Learning Destiny",
+    "stipend": "300Rs/month",
+    "imageUrl": "/DMIntern.png",
+    "description": "Gain hands-on experience in digital marketing strategies and social media management",
+    "lastUpdated": "Last updated: August 2024",
+    "duration": "6 months"
+  },
+  {
+    "id": 3,
+    "title": "Graphic Design Internship",
+    "company": "Learning Destiny",
+    "stipend": "400Rs/month",
+    "imageUrl": "/GraphicIntern.png",
+    "description": "Work with our design team to create engaging visuals for various projects.",
+    "lastUpdated": "Last updated: January 2025",
+    "duration": "4 months"
+  }
+]
