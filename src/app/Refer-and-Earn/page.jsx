@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Header } from '../../components/landing-page';
 import { SignedIn, SignedOut, RedirectToSignIn, useUser } from "@clerk/nextjs";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -73,6 +74,7 @@ export default function ReferAndEarn() {
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-blue-100 py-20 px-4">
+            <Header />
             <SignedIn>
                 <Card className="w-full max-w-2xl mx-auto bg-gray-100 shadow-lg rounded-lg">
                     <CardHeader>
