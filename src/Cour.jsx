@@ -42,7 +42,7 @@ const Courses = () => {
     }
   }
 
-  const popularCourses = courses.slice(0, 4)
+  const popularCourses = courses.slice(0, 3)
 
   const handleMoreInfoClick = (courseId) => {
     router.push(`/enroll/${courseId}`)
