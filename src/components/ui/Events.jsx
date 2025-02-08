@@ -127,7 +127,7 @@ const Events = () => {
           />
           <button
             onClick={() => handleMoreInfoClick(event.id)}
-            className="mt-2 w-full bg-blue-500 text-white py-2 rounded lg:py-2 sm:py-2"
+            className="mt-2 w-full bg-green-500 text-white py-2 rounded lg:py-2 sm:py-2"
           >
             More Info
           </button>
@@ -140,7 +140,7 @@ const Events = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-100 to-blue-100 text-black-100 px-4">
       {/* Popular Events Section */}
       <section className="mb-12">
-      <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Events</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Events</h2>
         <div className="md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {popularEvents.map((event) => (
             <EventCard
@@ -156,7 +156,7 @@ const Events = () => {
 
       {/* All Events Section */}
       <section>
-        <h2 className="text-4xl font-bold mb-8 text-center text-white">All Events</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center text-black">All Events</h2>
         {events.length > 0 ? (
           <div className="md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {events.map((event) => (
