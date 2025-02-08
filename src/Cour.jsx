@@ -88,14 +88,14 @@ const Courses = () => {
   const CourseCard = ({ course, isHovered, setHovered, isPopular }) => (
     <div
       key={course.id}
-      className="w-52 white text-black shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl"
+      className="flex-shrink-0 w-64 md:w-auto bg-white text-black shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl"
       onMouseEnter={() => setHovered(course.id)}
       onMouseLeave={() => setHovered(null)}
     >
       <img
         src={course.imageUrl}
         alt={course.title}
-        className="w-full h-40 object-cover"
+        className="w-full h-48 object-cover"
       />
       <div className="p-4 space-y-2">
         <h4 className="font-semibold text-lg truncate">{course.title}</h4>
@@ -177,14 +177,14 @@ const Courses = () => {
 
         <div className="flex">
           {/* Filter Section */}
-          <div className="w-1/3 sticky top-16 h-screen overflow-auto bg-gray-200 p-4 rounded-lg shadow-md">
+          <div className="w-1/4">
             <Filter
               selectedCategories={selectedCategories}
               handleCategoryChange={handleCategoryChange}
             />
           </div>
           {/* Courses Section */}
-          <div className="w-2/3">
+          <div className="w-3/4">
             {/* Popular Courses Section */}
             {searchQuery === "" && selectedCategories.length === 0 && (
             <section className="mb-12">
@@ -206,7 +206,7 @@ const Courses = () => {
             {/* All Courses Section */}
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 justify-center sm:justify-center md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {filteredCourses.map((course) => (
                   <CourseCard
                     key={course.id}
