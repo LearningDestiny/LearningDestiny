@@ -97,11 +97,14 @@ const Workshop = () => {
     const fetchWorkshops = async () => {
       try {
         const response = await axios.get('/api/workshops');
-        setWorkshops(response.data);
-        setLoading(false);
+        if (!response.ok) throw new Error('Failed to fetch workshops');
+
+        const data = await response.json();
+        setWorkshops(data);
       } catch (err) {
         console.error('Error fetching workshops:', err);
         setError('Failed to load workshops. Please try again later.');
+      } finally {
         setLoading(false);
       }
     };
