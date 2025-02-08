@@ -14,15 +14,15 @@ const Filter = ({ selectedCategories, handleCategoryChange }) => {
     <div className="p-4 rounded-lg w-56">
       <h4 className="text-black font-bold mb-4 text-xl -ml-16">Categories</h4>
       {categories.map((category) => (
-        <div key={category} className="flex items-center mb-4 -ml-16">
+        <div key={category} className="flex items-center mb-6 -ml-20 mt-7">
           <input
             type="checkbox"
             id={category}
             checked={selectedCategories.includes(category)}
             onChange={() => handleCategoryChange(category)}
-            className="mr-2"
+            className="mr-3 w-5 h-5" 
           />
-          <label htmlFor={category} className="text-black text-sm">
+          <label htmlFor={category} className="text-black text-lg"> 
             {category}
           </label>
         </div>
