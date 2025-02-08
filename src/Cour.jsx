@@ -177,7 +177,7 @@ const Courses = () => {
 
         <div className="flex">
           {/* Filter Section */}
-          <div className="w-1/4">
+          <div className="w-1/4 ml-4">
             <Filter
               selectedCategories={selectedCategories}
               handleCategoryChange={handleCategoryChange}
@@ -190,7 +190,7 @@ const Courses = () => {
             <section className="mb-12">
               <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
               <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
-                <div className="flex md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-end">
                   {popularCourses.map((course) => (
                     <CourseCard
                       key={course.id}
