@@ -161,10 +161,10 @@ const Internships = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-800">
+    <div className="min-h-screen bg-blue-100">
       <Header />
       <section className="px-4 py-8">
-        <h2 className="text-4xl font-bold mb-8 text-center text-gray-100">
+      <h2 className="text-4xl font-bold mb-8 text-center text-black">
           All Internships
         </h2>
         {internships.length > 0 ? (
