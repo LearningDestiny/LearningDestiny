@@ -11,10 +11,10 @@ const Filter = ({ selectedCategories, handleCategoryChange }) => {
   ]
 
   return (
-    <div className="p-4 rounded-lg">
-      <h4 className="text-black font-bold mb-4 text-xl -ml-20">Categories</h4>
+    <div className="p-4 rounded-lg w-56">
+      <h4 className="text-black font-bold mb-4 text-xl -ml-16">Categories</h4>
       {categories.map((category) => (
-        <div key={category} className="flex items-center mb-5 -ml-20 mt-7">
+        <div key={category} className="flex items-center mb-4 -ml-16">
           <input
             type="checkbox"
             id={category}
