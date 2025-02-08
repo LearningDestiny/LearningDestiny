@@ -73,84 +73,88 @@ export default function ReferAndEarn() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center bg-blue-100 py-20 px-4">
+        <div className="bg-blue-100 min-h-screen">
             <Header />
-            <SignedIn>
-                <Card className="w-full max-w-2xl mx-auto bg-gray-100 shadow-lg rounded-lg">
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-bold text-center">
-                            Refer & Earn – Share Knowledge, Get Rewarded!
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                        <p className="text-center text-gray-700">
-                            Invite Friends & Earn Rewards Effortlessly
-                        </p>
-                        <p className="text-center text-gray-700">
-                            Love learning? Now, you can earn while sharing it with friends! Refer our courses to your
-                            friends, and for every successful purchase, you’ll earn exciting rewards.
-                        </p>
-                        {referralCode && (
-                            <div className="space-y-2 text-center">
-                                <p className="font-semibold">Your Referral Link:</p>
-                                <a
-                                    href={referralLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-600 underline break-all"
-                                >
-                                    {referralLink}
-                                </a>
-                                <div className="flex flex-col items-center space-y-1 mt-2">
-                                    <Button onClick={handleCopy} disabled={copied}>
-                                        {copied ? "Copied!" : "Copy"}
-                                    </Button>
+
+            {/* Centered Content */}
+            <div className="flex flex-col items-center py-20 px-4">
+                <SignedIn>
+                    <Card className="w-full max-w-2xl mx-auto bg-gray-100 shadow-lg rounded-lg">
+                        <CardHeader>
+                            <CardTitle className="text-2xl font-bold text-center">
+                                Refer & Earn – Share Knowledge, Get Rewarded!
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                            <p className="text-center text-gray-700">
+                                Invite Friends & Earn Rewards Effortlessly
+                            </p>
+                            <p className="text-center text-gray-700">
+                                Love learning? Now, you can earn while sharing it with friends! Refer our courses to your
+                                friends, and for every successful purchase, you’ll earn exciting rewards.
+                            </p>
+                            {referralCode && (
+                                <div className="space-y-2 text-center">
+                                    <p className="font-semibold">Your Referral Link:</p>
+                                    <a
+                                        href={referralLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 underline break-all"
+                                    >
+                                        {referralLink}
+                                    </a>
+                                    <div className="flex flex-col items-center space-y-1 mt-2">
+                                        <Button onClick={handleCopy} disabled={copied}>
+                                            {copied ? "Copied!" : "Copy"}
+                                        </Button>
+                                    </div>
+                                </div>
+                            )}
+                            <div className="space-y-4">
+                                <h2 className="text-xl font-semibold text-center">Your Referral Stats</h2>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <Card>
+                                        <CardContent className="text-center py-4">
+                                            <p className="text-3xl font-bold">{referralStats.totalReferrals}</p>
+                                            <p className="text-sm text-gray-600">Total Referrals</p>
+                                        </CardContent>
+                                    </Card>
+                                    <Card>
+                                        <CardContent className="text-center py-4">
+                                            <p className="text-3xl font-bold">₹{referralStats.rewardsEarned}</p>
+                                            <p className="text-sm text-gray-600">Rewards Earned</p>
+                                        </CardContent>
+                                    </Card>
                                 </div>
                             </div>
-                        )}
-                        <div className="space-y-4">
-                            <h2 className="text-xl font-semibold text-center">Your Referral Stats</h2>
-                            <div className="grid grid-cols-2 gap-4">
-                                <Card>
-                                    <CardContent className="text-center py-4">
-                                        <p className="text-3xl font-bold">{referralStats.totalReferrals}</p>
-                                        <p className="text-sm text-gray-600">Total Referrals</p>
-                                    </CardContent>
-                                </Card>
-                                <Card>
-                                    <CardContent className="text-center py-4">
-                                        <p className="text-3xl font-bold">₹{referralStats.rewardsEarned}</p>
-                                        <p className="text-sm text-gray-600">Rewards Earned</p>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </div>
-                        {referralStats.rewardsEarned >= 1000 && (
-                            <div className="text-center">
-                                <Button onClick={handleRedeem} disabled={loading}>
-                                    {loading ? "Processing..." : "Redeem ₹1000"}
-                                </Button>
-                                {redeemMessage && <p className="text-green-600 text-sm mt-2">{redeemMessage}</p>}
-                            </div>
-                        )}
-                    </CardContent>
-                </Card>
+                            {referralStats.rewardsEarned >= 1000 && (
+                                <div className="text-center">
+                                    <Button onClick={handleRedeem} disabled={loading}>
+                                        {loading ? "Processing..." : "Redeem ₹1000"}
+                                    </Button>
+                                    {redeemMessage && <p className="text-green-600 text-sm mt-2">{redeemMessage}</p>}
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
 
-                {/* Tagline Below the Card */}
-                <p className="text-green-600 font-medium text-center mt-6">
-                    Start referring today and turn your network into rewards!
-                </p>
+                    {/* Tagline Below the Card */}
+                    <p className="text-green-600 font-medium text-center mt-6">
+                        Start referring today and turn your network into rewards!
+                    </p>
 
-                {/* Terms & Conditions Link Below the Tagline */}
-                <div className="text-center mt-20">
-                    <Link href="/refer-earn-terms" className="text-blue-600 underline font-medium">
-                        Terms & Conditions - Refer & Earn Program
-                    </Link>
-                </div>
-            </SignedIn>
-            <SignedOut>
-                <RedirectToSignIn />
-            </SignedOut>
+                    {/* Terms & Conditions Link Below the Tagline */}
+                    <div className="text-center mt-20">
+                        <Link href="/refer-earn-terms" className="text-blue-600 underline font-medium">
+                            Terms & Conditions - Refer & Earn Program
+                        </Link>
+                    </div>
+                </SignedIn>
+                <SignedOut>
+                    <RedirectToSignIn />
+                </SignedOut>
+            </div>
         </div>
     );
 }
