@@ -113,7 +113,6 @@ export default function ManageInternships() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
-      <Header />
       <h1 className="text-3xl font-bold mb-8">Manage Internships</h1>
       <button
         onClick={handleAddInternship}
