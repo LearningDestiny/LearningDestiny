@@ -29,7 +29,7 @@ const ManageCareers = () => {
   };
 
   const handleEditRole = (role, type) => {
-    setEditingRole({ ...role, type });
+    setEditingRole({ ...role, type, requirements: role.requirements || [] }); // Fix: Ensure `requirements` is an array
   };
 
   const handleUpdateRole = async () => {
@@ -74,16 +74,16 @@ const ManageCareers = () => {
   };
 
   const handleRequirementsChange = (index, value) => {
-    const newRequirements = [...editingRole.requirements];
+    const newRequirements = [...(editingRole?.requirements || [])]; // Fix: Ensure `requirements` is an array
     newRequirements[index] = value;
     setEditingRole((prev) => (prev ? { ...prev, requirements: newRequirements } : null));
   };
 
   const handleAddRequirement = () => {
-    setEditingRole((prev) => (prev ? {
-      ...prev,
-      requirements: [...prev.requirements, '']
-    } : null));
+    setEditingRole((prev) => {
+      if (!prev) return null;
+      return { ...prev, requirements: [...(prev.requirements || []), ''] };
+    });
   };
 
   const handleRemoveRequirement = (index) => {
