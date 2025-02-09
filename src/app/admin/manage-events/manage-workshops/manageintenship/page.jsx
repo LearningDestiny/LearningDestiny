@@ -113,6 +113,7 @@ export default function ManageInternships() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
+      <Header />
       <h1 className="text-3xl font-bold mb-8">Manage Internships</h1>
       <button
         onClick={handleAddInternship}
@@ -120,22 +121,35 @@ export default function ManageInternships() {
       >
         <FaPlus className="inline mr-2" /> Add New Internship
       </button>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {internships.map((internship) => (
           <div key={internship.id} className="bg-white rounded-lg shadow-md p-6">
-            <img src={internship.imageUrl} alt={internship.title} className="w-full h-48 object-cover rounded-md mb-4" />
+            <img
+              src={internship.imageUrl}
+              alt={internship.title}
+              className="w-full h-48 object-cover rounded-md mb-4"
+            />
             <h2 className="text-xl font-semibold mb-2">{internship.title}</h2>
             <p className="text-gray-600 mb-2">{internship.company}</p>
             <p className="text-gray-800 mb-2">{internship.stipend}</p>
             <div className="flex justify-between mt-4">
-              <button onClick={() => handleEditInternship(internship)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 cursor-pointer">
+              <button
+                onClick={() => handleEditInternship(internship)}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 cursor-pointer"
+              >
                 <FaEdit className="inline mr-2" /> Edit
               </button>
-              <button onClick={() => router.push(`/internship/${internship.id}`)} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 cursor-pointer">
+              <button
+                onClick={() => router.push(`/internship/${internship.id}`)}
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 cursor-pointer"
+              >
                 <FaEye className="inline mr-2" /> View Details
               </button>
-              <button onClick={() => handleDeleteInternship(internship.id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300 cursor-pointer">
+              <button
+                onClick={() => handleDeleteInternship(internship.id)}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300 cursor-pointer"
+              >
                 <FaTrash className="inline mr-2" /> Delete
               </button>
             </div>
@@ -146,33 +160,175 @@ export default function ManageInternships() {
       {editingInternship && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
           <div className="relative top-20 mx-auto p-5 border w-full max-w-xl shadow-lg rounded-md bg-white">
-            <h3 className="text-lg font-semibold mb-4">{editingInternship.id ? 'Edit Internship' : 'Add New Internship'}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {editingInternship.id ? 'Edit Internship' : 'Add New Internship'}
+            </h3>
             <form onSubmit={handleUpdateInternship}>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Title</label>
-                <input type="text" name="title" value={editingInternship.title} onChange={handleInputChange} className="w-full px-3 py-2 border rounded" />
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={editingInternship.title}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
               </div>
-
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Highlights</label>
-                {editingInternship.highlights?.map((highlight, index) => (
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Company
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={editingInternship.company}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Stipend
+                </label>
+                <input
+                  type="text"
+                  name="stipend"
+                  value={editingInternship.stipend}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Duration
+                </label>
+                <input
+                  type="text"
+                  name="duration"
+                  value={editingInternship.duration}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  value={editingInternship.description}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                  rows={3}
+                ></textarea>
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Summary Description
+                </label>
+                <textarea
+                  name="summaryDescription"
+                  value={editingInternship.summaryDescription}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                  rows={2}
+                ></textarea>
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  value={editingInternship.imageUrl}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  value={editingInternship.location}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Organizer
+                </label>
+                <input
+                  type="text"
+                  name="organizer"
+                  value={editingInternship.organizer}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Highlights
+                </label>
+                {editingInternship.highlights.map((highlight, index) => (
                   <div key={index} className="flex items-center space-x-2 mb-2">
-                    <input type="text" value={highlight} onChange={(e) => handleHighlightChange(index, e.target.value)} className="w-full px-3 py-2 border rounded" />
-                    <button onClick={() => setEditingInternship((prev) => ({ ...prev, highlights: prev.highlights.filter((_, i) => i !== index) }))} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 cursor-pointer">
+                    <input
+                      type="text"
+                      value={highlight}
+                      onChange={(e) =>
+                        handleHighlightChange(index, e.target.value)
+                      }
+                      className="w-full px-3 py-2 border rounded"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setEditingInternship((prev) => ({
+                          ...prev,
+                          highlights: prev.highlights.filter(
+                            (_, i) => i !== index
+                          ),
+                        }))
+                      }
+                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 cursor-pointer"
+                    >
                       X
                     </button>
                   </div>
                 ))}
-                <button onClick={handleAddHighlight} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
-                  Add Highlight
+                <button
+                  type="button"
+                  onClick={handleAddHighlight}
+                  className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer"
+                >
+                  <FaPlus className="inline mr-2" /> Add Highlight
                 </button>
               </div>
-
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">Save</button>
+              <div className="flex items-center justify-between">
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  {editingInternship.id ? 'Update Internship' : 'Add Internship'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEditingInternship(null)}
+                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
