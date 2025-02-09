@@ -21,8 +21,8 @@ const ManageCareers = () => {
         axios.get('/api/careers'),
         axios.get('/api/graduate-roles')
       ]);
-      setJobPostings(jobPostingsResponse.data);
-      setGraduateRoles(graduateRolesResponse.data);
+      setJobPostings(jobPostingsResponse.data || []);
+      setGraduateRoles(graduateRolesResponse.data || []);
     } catch (error) {
       console.error('Error fetching roles:', error);
     }
@@ -95,7 +95,7 @@ const ManageCareers = () => {
     <>
       <h2 className="text-2xl font-bold mb-4">{type === 'graduate' ? 'Graduate Roles' : 'Job Postings'}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {roles.map((role) => (
+        {roles?.map((role) => (
           <div key={role.id} className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold mb-2">{role.title}</h2>
             <p className="text-gray-600 mb-2">{role.location}</p>
@@ -131,18 +131,18 @@ const ManageCareers = () => {
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-bold mb-8">Manage Careers</h1>
       <div className="flex mb-6 space-x-4">
-      <button
-        onClick={() => handleAddRole('job')}
-        className="mb-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
-      >
-        <FaPlus className="inline mr-2" /> Add New Job Posting
-      </button>
-      <button
-        onClick={() => handleAddRole('graduate')}
-        className="mb-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
-      >
-        <FaPlus className="inline mr-2" /> Add New Graduate Role
-      </button>
+        <button
+          onClick={() => handleAddRole('job')}
+          className="mb-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
+        >
+          <FaPlus className="inline mr-2" /> Add New Job Posting
+        </button>
+        <button
+          onClick={() => handleAddRole('graduate')}
+          className="mb-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
+        >
+          <FaPlus className="inline mr-2" /> Add New Graduate Role
+        </button>
       </div>
 
       {renderRoleCards(jobPostings, 'job')}
