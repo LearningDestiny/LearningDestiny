@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import WorkshopForm from '../enrollpages/WorkshopForm';
-import { Header } from '../../components/landing-page';
+import { Header } from '../components/landing-page';
 import { workshops } from '../../src/Data'; // Adjust path if necessary
 import { FaLink} from 'react-icons/fa';
 

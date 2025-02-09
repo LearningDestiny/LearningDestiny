@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaMapMarkerAlt, FaCalendarAlt, FaMoneyBillWave, FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { internships } from '../../src/Data';
 import Link from 'next/link'
-import { Header } from '../../components/landing-page';
+import { Header } from '../components/landing-page';
 import { FaPlayCircle, FaInfoCircle } from 'react-icons/fa'
 
 const InternshipDetails = ({ id }) => {

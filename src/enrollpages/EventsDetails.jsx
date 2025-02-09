@@ -8,7 +8,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import PaymentHandlerButton from '../components/PaymentHandlerButton';
-import { Header } from '../../components/landing-page';
+import { Header } from '../components/landing-page';
 import { useToast } from '../hooks/use-toast';
 import { FaLink } from 'react-icons/fa';
 

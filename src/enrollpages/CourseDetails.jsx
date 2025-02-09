@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { courses } from '../../src/Data';
 import EnrollmentForm from './EnrollmentForm';
 import { useRouter } from 'next/navigation';
-import { Header } from '../../components/landing-page';
+import { Header } from '../components/landing-page';
 import PaymentHandlerButton from '../../src/components/PaymentHandlerButton'
 import { FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
