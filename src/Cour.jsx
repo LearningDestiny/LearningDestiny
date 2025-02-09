@@ -175,9 +175,9 @@ const Courses = () => {
           </form>
         </div>
 
-        <div className="flex">
+        <div className="flex flex-wrap">
           {/* Courses Section */}
-          <div className="w-3/4">
+          <div className="w-full md:w-3/4">
             {/* Popular Courses Section */}
             {searchQuery === "" && selectedCategories.length === 0 && (
             <section className="mb-12">
@@ -199,7 +199,7 @@ const Courses = () => {
             {/* All Courses Section */}
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
-              <div className="grid grid-cols-1 justify-center sm:justify-center md:grid-cols-3 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {filteredCourses.map((course) => (
                   <CourseCard
                     key={course.id}
@@ -212,7 +212,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section */}
-          <div className="w-1/4">
+          <div className="w-full md:w-1/4">
             <Filter
               selectedCategories={selectedCategories}
               handleCategoryChange={handleCategoryChange}
