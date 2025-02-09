@@ -116,17 +116,19 @@ const Internships = () => {
                 </li>
               ))}
           </ul>
-          <Link href={`/InternshipApplication?id=${internship.id}`} passHref>
-            <button className="mt-2 w-full bg-blue-500 text-white py-2 rounded lg:py-2 sm:py-2">
-              Apply Now
+          <div className="mt-4 w-full flex flex-col space-y-2">
+            <Link href={`/InternshipApplication?id=${internship.id}`} passHref>
+              <button className="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold py-2 px-4 rounded">
+                Apply Now
+              </button>
+            </Link>
+            <button
+              onClick={() => handleMoreInfoClick(internship.id)}
+              className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 px-4 rounded" 
+            >
+              More Info
             </button>
-          </Link>
-          <button
-            onClick={() => handleMoreInfoClick(internship.id)}
-            className="mt-2 w-full bg-green-500 text-white py-2 rounded lg:py-2 sm:py-2"
-          >
-            More Info
-          </button>
+          </div>
         </div>
       )}
     </div>
@@ -164,7 +166,7 @@ const Internships = () => {
     <div className="min-h-screen bg-blue-100">
       <Header />
       <section className="px-4 py-8">
-      <h2 className="text-4xl font-bold mb-8 text-center text-black">
+        <h2 className="text-4xl font-bold mb-8 text-center text-black">
           All Internships
         </h2>
         {internships.length > 0 ? (

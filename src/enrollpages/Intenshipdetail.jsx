@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaMapMarkerAlt, FaCalendarAlt, FaMoneyBillWave, FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import { internships } from '../../src/Data';
 import Link from 'next/link'
+import { Header } from '../../components/landing-page';
 import { FaPlayCircle, FaInfoCircle } from 'react-icons/fa'
 
 const InternshipDetails = ({ id }) => {
@@ -47,6 +48,7 @@ const InternshipDetails = ({ id }) => {
 
   return (
     <div className="flex flex-col min-h-screen bg-blue-100 text-black">
+      <Header />
       <div className="container mx-auto py-12 px-6 flex-grow">
         {/* Internship Header */}
         <div className="flex flex-col items-start justify-center md:justify-start text-center md:text-left border-b border-gray-700 pb-8">

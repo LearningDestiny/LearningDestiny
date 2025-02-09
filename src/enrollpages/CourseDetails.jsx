@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { courses } from '../../src/Data';
 import EnrollmentForm from './EnrollmentForm';
 import { useRouter } from 'next/navigation';
+import { Header } from '../../components/landing-page';
 import PaymentHandlerButton from '../../src/components/PaymentHandlerButton'
 import { FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
@@ -37,17 +38,18 @@ const CourseDetails = ({ params }) => {
 
   return (
     <div className="flex flex-col min-h-screen bg-blue-100 text-black">
-  <div className="container mx-auto py-12 px-6 flex-grow">
-    {/* Course Header */}
-    <div className="flex flex-col  items-start justify-center   border-b border-gray-700 pb-8">
-      <div className="w-full md:w-1/3 mb-8 md:mb-0 flex justify-center">
-        <img
-          src={course?.imageUrl}
-          alt={course?.title}
-          className="rounded-lg shadow-lg object-cover"
-          style={{  width: '100%', maxWidth: '450px'}}
-        />
-      </div>
+      <Header />
+      <div className="container mx-auto py-12 px-6 flex-grow">
+        {/* Course Header */}
+        <div className="flex flex-col  items-start justify-center   border-b border-gray-700 pb-8">
+          <div className="w-full md:w-1/3 mb-8 md:mb-0 flex justify-center">
+            <img
+              src={course?.imageUrl}
+              alt={course?.title}
+              className="rounded-lg shadow-lg object-cover"
+              style={{ width: '100%', maxWidth: '450px' }}
+            />
+          </div>
           <div className="md:ml-8 flex-grow">
             <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-black">{course?.title}</h2>
             <p className="mb-4 text-base md:text-lg text-black-300">{course?.description}</p>
@@ -56,39 +58,39 @@ const CourseDetails = ({ params }) => {
             <p className="text-lg text-black-300"><strong>Lectures:</strong> {course?.lectureCount}</p>
             <p className="font-bold mt-6 text-2xl md:text-3xl text-indigo-400">{course?.price}</p>
             <div className="flex items-center space-x-4">
-        <PaymentHandlerButton
-          finalAmt={Number.parseFloat(course.price.replace(/[^0-9.]/g, ""))}
-          onPaymentSuccess={handlePaymentSuccess}
-        />
-        <div className="relative inline-block">
-        <button
-          onClick={() => setShowIcons(!showIcons)}
-          className="py-2 px-4 bg-transparent text-black border border-black rounded-full hover:text-black transition-colors duration-300"
-          style={{ width: "60px", border: "2px solid black" }}
-        >
-          <img src="/share2.png" alt="Share" className="h-6 w-6 mx-auto" />
-        </button>
-      </div>
+              <PaymentHandlerButton
+                finalAmt={Number.parseFloat(course.price.replace(/[^0-9.]/g, ""))}
+                onPaymentSuccess={handlePaymentSuccess}
+              />
+              <div className="relative inline-block">
+                <button
+                  onClick={() => setShowIcons(!showIcons)}
+                  className="py-2 px-4 bg-transparent text-black border border-black rounded-full hover:text-black transition-colors duration-300"
+                  style={{ width: "60px", border: "2px solid black" }}
+                >
+                  <img src="/share2.png" alt="Share" className="h-6 w-6 mx-auto" />
+                </button>
+              </div>
 
-      {showIcons && (
-        <div className="mt-2 flex space-x-4">
-          <button onClick={copyLink} className="text-black hover:text-gray-400">
-            <FaLink size={24} />
-          </button>
-          <button onClick={shareOnWhatsApp} className="hover:text-gray-400">
-            <img src="/whatsapp.png" alt="Share on WhatsApp" className="w-6 h-6" />
-          </button>
-          <button onClick={shareOnGmail} className="hover:text-gray-400">
-            <img src="/gmail.png" alt="Share on Gmail" className="w-6 h-6" />
-          </button>
-          <button onClick={shareOnLinkedIn} className="hover:text-gray-400">
-            <img src="/linkedin.png" alt="Share on LinkedIn" className="w-6 h-6" />
-          </button>
+              {showIcons && (
+                <div className="mt-2 flex space-x-4">
+                  <button onClick={copyLink} className="text-black hover:text-gray-400">
+                    <FaLink size={24} />
+                  </button>
+                  <button onClick={shareOnWhatsApp} className="hover:text-gray-400">
+                    <img src="/whatsapp.png" alt="Share on WhatsApp" className="w-6 h-6" />
+                  </button>
+                  <button onClick={shareOnGmail} className="hover:text-gray-400">
+                    <img src="/gmail.png" alt="Share on Gmail" className="w-6 h-6" />
+                  </button>
+                  <button onClick={shareOnLinkedIn} className="hover:text-gray-400">
+                    <img src="/linkedin.png" alt="Share on LinkedIn" className="w-6 h-6" />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      )}
-    </div>
-    </div>
-    </div>
         {/* Course Highlights */}
         <div className="mt-12">
           <h3 className="text-3xl font-bold mb-6 text-indigo-300">Course Highlights</h3>

@@ -121,16 +121,18 @@ const Events = () => {
               </li>
             ))}
           </ul>
-          <PaymentHandlerButton
-            finalAmt={price(event.price)}
-            className="mt-2 w-full bg-blue-500 text-white py-2 rounded lg:py-2 sm:py-2"
-          />
-          <button
-            onClick={() => handleMoreInfoClick(event.id)}
-            className="mt-2 w-full bg-green-500 text-white py-2 rounded lg:py-2 sm:py-2"
-          >
-            More Info
-          </button>
+          <div className="mt-4 w-full flex flex-col space-y-2">
+            <PaymentHandlerButton
+              finalAmt={price(event.price)}
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold py-2 px-4 rounded"
+            />
+            <button
+              onClick={() => handleMoreInfoClick(event.id)}
+              className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 px-4 rounded"
+            >
+              More Info
+            </button>
+          </div>
         </div>
       )}
     </div>

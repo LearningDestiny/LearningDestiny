@@ -1,7 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
-import WorkshopForm from '../enrollpages/WorkshopForm'; // Make sure this path is correct
+import WorkshopForm from '../enrollpages/WorkshopForm';
+import { Header } from '../../components/landing-page';
 import { workshops } from '../../src/Data'; // Adjust path if necessary
 import { FaLink} from 'react-icons/fa';
 
@@ -50,6 +51,7 @@ const WorkshopDetails = ({ id }) => {
 
   return (
     <div className="flex flex-col min-h-screen bg-blue-100 text-black">
+       <Header />
       <div className="container mx-auto py-12 px-4 lg:px-8 flex-grow">
         {/* Workshop Header */}
         <div className="flex flex-col border-b border-gray-700 pb-8 space-y-6 md:space-y-0 md:space-x-8">
