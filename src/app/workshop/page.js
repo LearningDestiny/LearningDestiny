@@ -96,7 +96,7 @@ const Workshop = () => {
   useEffect(() => {
     const fetchWorkshops = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/workshops`);
+        const response = await axios.get('/api/workshops');
         setWorkshops(response.data);
       } catch (err) {
         console.error('Error fetching workshops:', err);

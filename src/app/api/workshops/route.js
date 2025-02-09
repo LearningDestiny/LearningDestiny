@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
+import fs from "fs/promises";
+import path from "path";
 
 export async function GET() {
   try {
-    // Fetch workshops.json from the public folder using BASE URL
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/workshops.json`);
-    if (!response.ok) throw new Error("Failed to fetch workshops");
+    // Read workshops.json from the public folder
+    const filePath = path.join(process.cwd(), "public/data/workshops.json");
+    const data = await fs.readFile(filePath, "utf-8");
+    const workshops = JSON.parse(data);
 
-    const workshops = await response.json();
     return NextResponse.json(workshops, { status: 200 });
   } catch (error) {
     console.error("Error fetching workshops data:", error);
