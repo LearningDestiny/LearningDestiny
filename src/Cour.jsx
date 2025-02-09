@@ -199,7 +199,7 @@ const Courses = () => {
             {/* All Courses Section */}
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
                 {filteredCourses.map((course) => (
                   <CourseCard
                     key={course.id}
