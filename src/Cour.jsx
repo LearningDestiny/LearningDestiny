@@ -175,9 +175,9 @@ const Courses = () => {
           </form>
         </div>
 
-        <div className="flex flex-wrap">
+        <div className="flex">
           {/* Courses Section */}
-          <div className="w-full md:w-3/4">
+          <div className="w-3/4">
             {/* Popular Courses Section */}
             {searchQuery === "" && selectedCategories.length === 0 && (
             <section className="mb-12">
@@ -212,7 +212,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section */}
-          <div className="w-full md:w-1/4">
+          <div className="w-1/4">
             <Filter
               selectedCategories={selectedCategories}
               handleCategoryChange={handleCategoryChange}
