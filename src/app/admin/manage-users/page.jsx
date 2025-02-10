@@ -111,8 +111,18 @@ export default function ManageUsers() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user) => (
           <Card key={user.id} className="shadow-lg rounded-xl border border-gray-200">
-            <CardHeader className="bg-gray-100 p-4 rounded-t-xl">
-              <CardTitle className="text-lg font-semibold">{user.email}</CardTitle>
+            <CardHeader className="bg-gray-100 p-4 rounded-t-xl flex items-center gap-4">
+              {/* 🔹 Profile Image */}
+              <img
+                src={user.imageUrl}
+                alt="User Profile"
+                className="w-12 h-12 rounded-full border"
+                onError={(e) => (e.target.style.display = "none")}
+              />
+              <div>
+              <CardTitle className="text-lg font-semibold">{user.username || "No Username"}</CardTitle>
+                <p className="text-sm text-gray-600">{user.emailAddresses?.[0]?.emailAddress || "No Email"}</p>
+              </div>
             </CardHeader>
             <CardContent className="p-4 space-y-4">
               {/* 🔹 Referral Section */}
