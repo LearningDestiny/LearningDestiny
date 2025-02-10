@@ -79,9 +79,13 @@ const Courses = () => {
   };
 
   const filteredCourses = courses.filter((course) => {
-    const matchesSearchQuery = searchQuery === "" || course.title.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesSearchQuery =
+      searchQuery === "" ||
+      (course.title && course.title.toLowerCase().includes(searchQuery.toLowerCase()));
+
     const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.some((category) => course.categories.includes(category))
+      selectedCategories.length === 0 ||
+      (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
     return matchesSearchQuery && matchesCategory
   })
 
@@ -161,7 +165,7 @@ const Courses = () => {
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
       <div className="container mx-auto flex-grow py-12 px-4 md:px-8">
         <div className="flex justify-center mb-8">
-          <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "50px" }}>
+          <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
             <input
               type="text"
               placeholder="Search..."
@@ -200,7 +204,7 @@ const Courses = () => {
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
               <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                   {filteredCourses.map((course) => (
                     <CourseCard
                       key={course.id}
