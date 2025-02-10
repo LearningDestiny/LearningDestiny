@@ -22,14 +22,17 @@ export default function ManageUsers() {
       try {
         const res = await fetch("/api/fetch-users");
         const data = await res.json();
-        setUsers(data);
+  
+        // Ensure data is an array before setting state
+        setUsers(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Error fetching users:", error);
+        setUsers([]); // Set empty array on error to prevent .map() crash
       }
     }
     fetchUsers();
   }, []);
-
+  
   async function handleAddReferral(userId) {
     try {
       await axios.post("/api/manage-referrals", { userId, referral: newReferral });
