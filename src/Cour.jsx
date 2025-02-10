@@ -147,7 +147,7 @@ const Courses = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-gray-900 text-white">
         <p className="text-xl text-red-500">{error}</p>
-        <button 
+        <button
           onClick={fetchCourses}
           className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
         >
@@ -160,8 +160,8 @@ const Courses = () => {
   return (
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
       <div className="container mx-auto flex-grow py-12 px-4 md:px-8">
-      <div className="flex justify-center mb-8">
-      <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
+        <div className="flex justify-center mb-8">
+          <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
             <input
               type="text"
               placeholder="Search..."
@@ -180,34 +180,36 @@ const Courses = () => {
           <div className="w-3/4">
             {/* Popular Courses Section */}
             {searchQuery === "" && selectedCategories.length === 0 && (
-            <section className="mb-12">
-              <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
-              <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
-                <div className="flex md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                  {popularCourses.map((course) => (
-                    <CourseCard
-                      key={course.id}
-                      course={course}
-                      isHovered={hoveredPopularCourse}
-                      setHovered={setHoveredPopularCourse}
-                    />
-                  ))}
+              <section className="mb-12">
+                <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
+                <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
+                  <div className="flex md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    {popularCourses.map((course) => (
+                      <CourseCard
+                        key={course.id}
+                        course={course}
+                        isHovered={hoveredPopularCourse}
+                        setHovered={setHoveredPopularCourse}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
             )}
             {/* All Courses Section */}
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
-              <div className="grid justify-center sm:justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                {filteredCourses.map((course) => (
-                  <CourseCard
-                    key={course.id}
-                    course={course}
-                    isHovered={hoveredAllCourse}
-                    setHovered={setHoveredAllCourse}
-                  />
-                ))}
+              <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
+                <div className="grid justify-center sm:justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                  {filteredCourses.map((course) => (
+                    <CourseCard
+                      key={course.id}
+                      course={course}
+                      isHovered={hoveredAllCourse}
+                      setHovered={setHoveredAllCourse}
+                    />
+                  ))}
+                </div>
               </div>
             </section>
           </div>

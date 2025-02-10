@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { useUser, useClerk } from "@clerk/nextjs";
 import axios from "axios";
-import { Card, CardContent, CardHeader, CardTitle} from "../../../components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
+import { Loader2 } from "lucide-react";
 
 export default function ManageUsers() {
   const { user } = useUser();
@@ -14,6 +15,7 @@ export default function ManageUsers() {
   const [referrals, setReferrals] = useState({});
   const [newReferral, setNewReferral] = useState("");
   const [loading, setLoading] = useState(false);
+  const [downloading, setDownloading] = useState({ details: false, files: false });
 
   useEffect(() => {
     async function fetchUsers() {
@@ -67,80 +69,85 @@ export default function ManageUsers() {
     }
   }
 
-  async function handleDownloadDetails(userId) {
+  async function handleDownload(userId, type) {
     try {
-      setLoading(true);
-      const res = await axios.get(`/api/download-details?userId=${userId}`, { responseType: "blob" });
+      setDownloading((prev) => ({ ...prev, [type]: true }));
+      const res = await axios.get(`/api/${type === "details" ? "download-details" : "download-files"}?userId=${userId}`, {
+        responseType: "blob",
+      });
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", `User_${userId}_Details.pdf`);
+      link.setAttribute("download", `User_${userId}_${type}.pdf`);
       document.body.appendChild(link);
       link.click();
       link.remove();
     } catch (error) {
-      console.error("Error downloading details:", error);
+      console.error(`Error downloading ${type}:`, error);
     } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handleDownloadFiles(userId) {
-    try {
-      setLoading(true);
-      const res = await axios.get(`/api/download-files?userId=${userId}`, { responseType: "blob" });
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", `User_${userId}_Files.zip`);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (error) {
-      console.error("Error downloading files:", error);
-    } finally {
-      setLoading(false);
+      setDownloading((prev) => ({ ...prev, [type]: false }));
     }
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Manage Users</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="p-8 space-y-6">
+      <h2 className="text-3xl font-semibold text-gray-800">Manage Users</h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user) => (
-          <Card key={user.id} className="shadow-md rounded-lg">
-            <CardHeader>
-              <CardTitle className="text-lg">{user.email}</CardTitle>
+          <Card key={user.id} className="shadow-lg rounded-xl border border-gray-200">
+            <CardHeader className="bg-gray-100 p-4 rounded-t-xl">
+              <CardTitle className="text-lg font-semibold">{user.email}</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-500 mb-2">
-                Referral: {referrals[user.id] || "No Referral"}
-              </p>
-              <Input
-                value={newReferral}
-                onChange={(e) => setNewReferral(e.target.value)}
-                placeholder="Enter Referral"
-                className="mb-2"
-              />
-              <div className="flex gap-2">
-                <Button onClick={() => handleAddReferral(user.id)}>Add</Button>
-                <Button onClick={() => handleDeleteReferral(user.id)} variant="destructive">
-                  Delete
-                </Button>
+            <CardContent className="p-4 space-y-4">
+              {/* 🔹 Referral Section */}
+              <div className="space-y-2">
+                <p className="text-sm text-gray-500">
+                  Referral: <span className="font-medium">{referrals[user.id] || "No Referral"}</span>
+                </p>
+                <div className="flex gap-2">
+                  <Input
+                    value={newReferral}
+                    onChange={(e) => setNewReferral(e.target.value)}
+                    placeholder="Enter Referral Code"
+                    className="flex-1"
+                  />
+                  <Button onClick={() => handleAddReferral(user.id)}>Add</Button>
+                  <Button onClick={() => handleDeleteReferral(user.id)} variant="destructive">
+                    Delete
+                  </Button>
+                </div>
               </div>
-              <hr className="my-3" />
-              <div className="flex flex-col gap-2">
-                <Button onClick={() => handleResetPassword(user.id)} variant="outline">
+
+              <hr className="border-gray-300" />
+
+              {/* 🔹 User Management Actions */}
+              <div className="space-y-2">
+                <Button onClick={() => handleResetPassword(user.id)} variant="outline" className="w-full">
                   Reset Password
                 </Button>
-                <Button onClick={() => handleDeactivateAccount(user.id)} variant="destructive">
+                <Button onClick={() => handleDeactivateAccount(user.id)} variant="destructive" className="w-full">
                   Deactivate Account
                 </Button>
-                <Button onClick={() => handleDownloadDetails(user.id)} disabled={loading}>
-                  {loading ? "Downloading..." : "Download Details"}
+              </div>
+
+              <hr className="border-gray-300" />
+
+              {/* 🔹 Download Actions */}
+              <div className="space-y-2">
+                <Button
+                  onClick={() => handleDownload(user.id, "details")}
+                  disabled={downloading.details}
+                  className="w-full flex items-center justify-center"
+                >
+                  {downloading.details ? <Loader2 className="w-5 h-5 animate-spin" /> : "Download Details"}
                 </Button>
-                <Button onClick={() => handleDownloadFiles(user.id)} disabled={loading}>
-                  {loading ? "Downloading..." : "Download Files"}
+                <Button
+                  onClick={() => handleDownload(user.id, "files")}
+                  disabled={downloading.files}
+                  className="w-full flex items-center justify-center"
+                >
+                  {downloading.files ? <Loader2 className="w-5 h-5 animate-spin" /> : "Download Files"}
                 </Button>
               </div>
             </CardContent>
