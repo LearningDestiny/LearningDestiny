@@ -20,17 +20,23 @@ export default function ManageUsers() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        console.log("Fetching users..."); // Debugging
+        console.log("Fetching users...");
         const res = await fetch("/api/fetch-users");
-        const data = await res.json();
-
-        console.log("Fetched users:", data); // 
-
-        // Prevent crashes if API returns unexpected data
-        setUsers(Array.isArray(data) ? data : []);
+        const responseData = await res.json();
+        console.log("Full API Response:", responseData); // 🔹 Log full response for debugging
+  
+        // Extracting users correctly
+        const usersArray = responseData.data; // 🔹 Fix: Get users from "data" key
+  
+        if (Array.isArray(usersArray)) {
+          setUsers(usersArray);
+        } else {
+          console.error("Invalid data format:", responseData);
+          setUsers([]); // Prevent errors if the format is wrong
+        }
       } catch (error) {
         console.error("Error fetching users:", error);
-        setUsers([]); // Fallback to empty array
+        setUsers([]);
       }
     }
     fetchUsers();
@@ -94,6 +100,7 @@ export default function ManageUsers() {
       setDownloading((prev) => ({ ...prev, [type]: false }));
     }
   }
+  console.log("Users in state:", users); 
 
   return (
     <div className="p-8 space-y-6">
