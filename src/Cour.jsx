@@ -167,7 +167,7 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
-      <div className="container mx-auto flex-grow py-12 px-4 md:px-8">
+      <div className="container mx-auto flex flex-col py-12 px-4 md:px-8">
         {/* <div className="flex justify-center mb-8">
           <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
             <input
@@ -190,7 +190,7 @@ const Courses = () => {
             {/* Popular Courses Section */}
             {/* {searchQuery === "" && selectedCategories.length === 0 && (
               <section className="mb-12"> */}
-                <div className="flex justify-center mb-8">
+                <div className="flex justify-center mb-6">
                   <form onSubmit={handleSearch} className="flex items-center">
                     <input
                       type="text"
