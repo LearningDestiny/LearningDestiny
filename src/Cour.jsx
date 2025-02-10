@@ -168,28 +168,6 @@ const Courses = () => {
   return (
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
       <div className="container mx-auto flex flex-col py-12 px-4 md:px-8">
-        {/* <div className="flex justify-center mb-8">
-          <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
-            <input
-              type="text"
-              name="search" 
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-55 px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black" // Added text-black class
-            />
-            <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700 transition duration-300">
-              <FaSearch size={20} />
-            </button>
-          </form>
-        </div> */}
-
-        {/* <div className="flex flex-col lg:flex-row gap-8"> */}
-          {/* Courses Section */}
-          {/* <div className="lg:w-3/4 pr-0 lg:pr-8"> */}
-            {/* Popular Courses Section */}
-            {/* {searchQuery === "" && selectedCategories.length === 0 && (
-              <section className="mb-12"> */}
                 <div className="flex justify-center mb-6">
                   <form onSubmit={handleSearch} className="flex items-center">
                     <input

@@ -14,11 +14,18 @@ export async function POST(req) {
       throw new Error("Missing required environment variables");
     }
 
+    // Check the private key format
+    console.log("Raw Private Key:", process.env.LD_PRIVATE_KEY);
+
+    // Ensure correct formatting of private key
+    const formattedPrivateKey = process.env.LD_PRIVATE_KEY.split("\\n").join("\n");
+    console.log("Formatted Private Key:", formattedPrivateKey);
+
     // Initialize Google Sheets API credentials
     const auth = new google.auth.JWT(
       process.env.LD_CLIENT_EMAIL,
       null,
-      process.env.LD_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      formattedPrivateKey,
       ['https://www.googleapis.com/auth/spreadsheets']
     );
 

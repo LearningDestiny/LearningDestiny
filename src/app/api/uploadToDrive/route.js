@@ -5,6 +5,15 @@ import fsPromises from 'fs/promises'; // For async file operations
 import path from 'path';
 import os from 'os';
 
+// Log the raw private key
+console.log("Raw Private Key:", process.env.GOOGLE_PRIVATE_KEY);
+
+// Ensure private key is correctly formatted
+const formattedPrivateKey = process.env.GOOGLE_PRIVATE_KEY?.split("\\n").join("\n");
+
+// Log the formatted private key for debugging
+console.log("Formatted Private Key:", formattedPrivateKey);
+
 const credentials = {
   type: "service_account",
   project_id: process.env.GOOGLE_PROJECT_ID,
