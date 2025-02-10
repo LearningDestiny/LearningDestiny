@@ -63,7 +63,8 @@ const Courses = () => {
   }, [searchParams])
 
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value)
+  e.preventDefault(); // Prevents page reload
+  setSearchQuery(e.target.search.value); // Updates searchQuery correctly
   }
 
   const handleCategoryChange = (category) => {
@@ -79,15 +80,18 @@ const Courses = () => {
   };
 
   const filteredCourses = courses.filter((course) => {
-  // Ensure course and course.title exist before calling toLowerCase()
-  const matchesSearchQuery =
-    searchQuery === "" || (course?.title && course.title.toLowerCase().includes(searchQuery.toLowerCase()));
-
-  const matchesCategory =
-    selectedCategories.length === 0 ||
-    (course?.categories && selectedCategories.some((category) => course.categories.includes(category)));
-    return matchesSearchQuery && matchesCategory
-  })
+    // Ensure course exists before accessing properties
+    if (!course || !course.title) return false;
+  
+    const matchesSearchQuery =
+      searchQuery === "" || course.title.toLowerCase().includes(searchQuery.toLowerCase());
+  
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
+  
+    return matchesSearchQuery && matchesCategory;
+  });
 
   const CourseCard = ({ course, isHovered, setHovered, isPopular }) => (
     <div
@@ -168,6 +172,7 @@ const Courses = () => {
           <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
             <input
               type="text"
+              name="search" 
               placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
