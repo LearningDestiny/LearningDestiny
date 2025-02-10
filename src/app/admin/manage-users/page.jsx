@@ -20,14 +20,17 @@ export default function ManageUsers() {
   useEffect(() => {
     async function fetchUsers() {
       try {
+        console.log("Fetching users..."); // Debugging
         const res = await fetch("/api/fetch-users");
         const data = await res.json();
-  
-        // Ensure data is an array before setting state
+
+        console.log("Fetched users:", data); // 
+
+        // Prevent crashes if API returns unexpected data
         setUsers(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Error fetching users:", error);
-        setUsers([]); // Set empty array on error to prevent .map() crash
+        setUsers([]); // Fallback to empty array
       }
     }
     fetchUsers();
@@ -95,6 +98,8 @@ export default function ManageUsers() {
   return (
     <div className="p-8 space-y-6">
       <h2 className="text-3xl font-semibold text-gray-800">Manage Users</h2>
+       {/* Show Loading Message */}
+       {users.length === 0 && <p className="text-gray-500 text-center">No users found.</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user) => (
