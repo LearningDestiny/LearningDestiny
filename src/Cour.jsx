@@ -63,8 +63,8 @@ const Courses = () => {
   }, [searchParams])
 
   const handleSearch = (e) => {
-  e.preventDefault(); // Prevents page reload
-  setSearchQuery(e.target.search.value); // Updates searchQuery correctly
+    e.preventDefault(); // Prevents page reload
+    setSearchQuery(e.target.search.value); // Updates searchQuery correctly
   }
 
   const handleCategoryChange = (category) => {
@@ -82,14 +82,14 @@ const Courses = () => {
   const filteredCourses = courses.filter((course) => {
     // Ensure course exists before accessing properties
     if (!course || !course.title) return false;
-  
+
     const matchesSearchQuery =
       searchQuery === "" || course.title.toLowerCase().includes(searchQuery.toLowerCase());
-  
+
     const matchesCategory =
       selectedCategories.length === 0 ||
       (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
-  
+
     return matchesSearchQuery && matchesCategory;
   });
 
@@ -168,7 +168,7 @@ const Courses = () => {
   return (
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
       <div className="container mx-auto flex-grow py-12 px-4 md:px-8">
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <form onSubmit={handleSearch} className="flex items-center" style={{ marginLeft: "70px" }}>
             <input
               type="text"
@@ -182,7 +182,7 @@ const Courses = () => {
               <FaSearch size={20} />
             </button>
           </form>
-        </div>
+        </div> */}
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Courses Section */}
@@ -190,6 +190,21 @@ const Courses = () => {
             {/* Popular Courses Section */}
             {searchQuery === "" && selectedCategories.length === 0 && (
               <section className="mb-12">
+                <div className="flex justify-center mb-8">
+                  <form onSubmit={handleSearch} className="flex items-center">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="Search..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-55 px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
+                    />
+                    <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700 transition duration-300">
+                      <FaSearch size={20} />
+                    </button>
+                  </form>
+                </div>
                 <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
                 {/* <div className="overflow-x-auto md:overflow-visible px-4 md:px-0"> */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
