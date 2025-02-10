@@ -79,13 +79,13 @@ const Courses = () => {
   };
 
   const filteredCourses = courses.filter((course) => {
-    const matchesSearchQuery =
-      searchQuery === "" ||
-      (course.title && course.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  // Ensure course and course.title exist before calling toLowerCase()
+  const matchesSearchQuery =
+    searchQuery === "" || (course?.title && course.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const matchesCategory =
-      selectedCategories.length === 0 ||
-      (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
+  const matchesCategory =
+    selectedCategories.length === 0 ||
+    (course?.categories && selectedCategories.some((category) => course.categories.includes(category)));
     return matchesSearchQuery && matchesCategory
   })
 
