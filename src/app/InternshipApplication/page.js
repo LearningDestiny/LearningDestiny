@@ -72,7 +72,7 @@ const InternshipApplication = () => {
       // Step 2: Upload to Google Drive
       const driveResponse = await fetch('/api/uploadToDrive', {
         method: 'POST',
-        // body: formDataObj,
+        body: formDataObj,
       });
 
       if (!driveResponse.ok) {
