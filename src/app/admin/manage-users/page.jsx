@@ -32,7 +32,7 @@ export default function ManageUsers() {
     }
     fetchUsers();
   }, []);
-  
+
   async function handleAddReferral(userId) {
     try {
       await axios.post("/api/manage-referrals", { userId, referral: newReferral });
