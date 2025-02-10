@@ -184,12 +184,12 @@ const Courses = () => {
           </form>
         </div> */}
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        {/* <div className="flex flex-col lg:flex-row gap-8"> */}
           {/* Courses Section */}
-          <div className="lg:w-3/4 pr-0 lg:pr-8">
+          {/* <div className="lg:w-3/4 pr-0 lg:pr-8"> */}
             {/* Popular Courses Section */}
-            {searchQuery === "" && selectedCategories.length === 0 && (
-              <section className="mb-12">
+            {/* {searchQuery === "" && selectedCategories.length === 0 && (
+              <section className="mb-12"> */}
                 <div className="flex justify-center mb-8">
                   <form onSubmit={handleSearch} className="flex items-center">
                     <input
@@ -205,6 +205,13 @@ const Courses = () => {
                     </button>
                   </form>
                 </div>
+
+                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="lg:w-3/4 pr-0 lg:pr-8">
+
+                
+                {searchQuery === "" && selectedCategories.length === 0 && (
+                <section className="mb-12">
                 <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
                 {/* <div className="overflow-x-auto md:overflow-visible px-4 md:px-0"> */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,7 +224,6 @@ const Courses = () => {
                     />
                   ))}
                 </div>
-                {/* </div> */}
               </section>
             )}
             {/* All Courses Section */}
