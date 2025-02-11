@@ -4,7 +4,6 @@ import { courses } from '../../src/Data';
 import EnrollmentForm from './EnrollmentForm';
 import { useRouter } from 'next/navigation';
 import { Header } from '../components/landing-page';
-import PaymentHandlerButton from '../../src/components/PaymentHandlerButton'
 import { FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 const CourseDetails = ({ params }) => {
@@ -14,9 +13,12 @@ const CourseDetails = ({ params }) => {
   const [showIcons, setShowIcons] = useState(false);
   const router = useRouter();
 
-  const handlePaymentSuccess = () => {
-    console.log('Payment was successful!');
-    setPaymentSuccess(true);
+  const handleEnrollNow = () => {
+    setFormVisible(true);
+  };
+
+  const handleCloseForm = () => {
+    setFormVisible(false);
   };
 
   const copyLink = () => {
@@ -58,10 +60,12 @@ const CourseDetails = ({ params }) => {
             <p className="text-lg text-black-300"><strong>Lectures:</strong> {course?.lectureCount}</p>
             <p className="font-bold mt-6 text-2xl md:text-3xl text-indigo-400">{course?.price}</p>
             <div className="flex items-center space-x-4">
-              <PaymentHandlerButton
-                finalAmt={Number.parseFloat(course.price.replace(/[^0-9.]/g, ""))}
-                onPaymentSuccess={handlePaymentSuccess}
-              />
+            <button
+                className="mt-4 py-3 px-8 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition duration-300 shadow-lg transform hover:scale-105"
+                onClick={handleEnrollNow}
+              >
+                Enroll Now
+              </button>
               <div className="relative inline-block">
                 <button
                   onClick={() => setShowIcons(!showIcons)}
@@ -123,6 +127,7 @@ const CourseDetails = ({ params }) => {
           </div>
         </div>
       </div>
+      {isFormVisible && <EnrollmentForm course={course} onClose={handleCloseForm} />}
     </div>
   );
 };

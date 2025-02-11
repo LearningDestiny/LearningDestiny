@@ -25,6 +25,7 @@ const EnrollmentForm = ({ course, onClose }) => {
     contact: '',
     stream: '',
     qualification: '',
+    courseName: course.title, // Added course name field
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
@@ -109,6 +110,7 @@ const EnrollmentForm = ({ course, onClose }) => {
                     onChange={handleInputChange}
                     className="w-full"
                     required
+                    disabled={key === 'courseName'} // Disable courseName input field
                   />
                 </div>
               ))}
