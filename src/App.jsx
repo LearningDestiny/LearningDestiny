@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { Helmet } from "react-helmet";
 import Navbar from './components/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,6 +35,14 @@ const App = () => {
   return (
     <Router>
       <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      <Helmet>
+          <title>Learning Destiny | Home</title>
+          <meta name="description" content="Join Learning Destiny for high-quality courses and online education." />
+          <meta name="keywords" content="courses, education, learning, online classes" />
+          <meta name="author" content="Learning Destiny Pvt. Ltd." />
+          <meta property="og:title" content="Learning Destiny | Transform Your Future" />
+          <meta property="og:description" content="Enroll in top courses and advance your career." />
+        </Helmet>
         <div className={`App ${isDarkMode ? 'bg-gray-900 text-gray-200' : 'bg-white text-black'}`}>
           <Navbar />
           <ScrollToTop />

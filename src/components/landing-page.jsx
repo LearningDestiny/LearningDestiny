@@ -13,6 +13,7 @@ import { Menu, X, Search } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import { courses, events } from '../../src/Data'
 import PaymentHandlerButton from '../../src/components/PaymentHandlerButton'
+import { Helmet } from "react-helmet";
 
 
 //import EnrollmentForm from '@/enrollpages'
@@ -141,6 +142,11 @@ export function Header() {
           <span className="text-lg font-semibold sm:inline">Learning Destiny Pvt. Ltd.</span>
         </Link> */}
       <div className="container mx-auto flex items-center justify-between">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Learning Destiny</title>
+          <link rel="canonical" href="https://learningdestiny.in/" />
+        </Helmet>
         <Link href="/landing-page" className="flex items-center">
           <Image
             src="/Learning Destiny.png"
