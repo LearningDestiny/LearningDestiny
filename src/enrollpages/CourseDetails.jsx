@@ -9,7 +9,8 @@ import { FaLink, FaWhatsapp, FaInstagram, FaEnvelope, FaLinkedin } from 'react-i
 const CourseDetails = ({ params }) => {
   const courseId = params;
   const course = courses.find(c => c.id === Number(courseId));
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [isFormVisible, setFormVisible] = useState(false);
+  // const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showIcons, setShowIcons] = useState(false);
   const router = useRouter();
 
