@@ -732,7 +732,7 @@ function CallToAction() {
               </p>
             </div>
             <p className="text-black text-sm mt-2 max-w-[250px]">
-              For Websites, Apps, Student Events, Summer Internships, Research Papers, Mini & Major Projects, Contact us @ +91
+              For Websites, Apps, Student Events, Summer Internships, Research Papers, Mini & Major Projects and end-to-end marketing services, Contact us @ +91
               9059898900
             </p>
           </div>
