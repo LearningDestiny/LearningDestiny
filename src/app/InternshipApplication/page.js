@@ -51,23 +51,23 @@ const InternshipApplication = () => {
 
     try {
      // Step 1: Submit data to Google Sheets first
-      const googleSheetsResponse = await fetch('/api/googleSheets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          phoneNumber: formData.phoneNumber,
-          coverLetter: formData.coverLetter,
-        }),
-      });
+      // const googleSheetsResponse = await fetch('/api/googleSheets', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     fullName: formData.fullName,
+      //     email: formData.email,
+      //     phoneNumber: formData.phoneNumber,
+      //     coverLetter: formData.coverLetter,
+      //   }),
+      // });
 
-      if (!googleSheetsResponse.ok) {
-        const errorData = await googleSheetsResponse.json();
-        throw new Error(errorData.error || 'Failed to submit data to Google Sheets');
-      }
+      // if (!googleSheetsResponse.ok) {
+      //   const errorData = await googleSheetsResponse.json();
+      //   throw new Error(errorData.error || 'Failed to submit data to Google Sheets');
+      // }
 
       // Step 2: Upload to Google Drive
       const driveResponse = await fetch('/api/uploadToDrive', {
