@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import PaymentHandlerButton from '../components/PaymentHandlerButton';
+import RegisterForm from '../enrollpages/RegisterForm';
 import { Header } from '../components/landing-page';
 import { useToast } from '../hooks/use-toast';
 import { FaLink } from 'react-icons/fa';
@@ -49,120 +49,6 @@ const EventDetails = ({ id }) => {
 
   const shareOnLinkedIn = () => {
     window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(course.title)}`, '_blank');
-  };
-
-  // EventForm Component
-  const EventForm = ({ event }) => {
-    const [formData, setFormData] = useState({
-      name: '',
-      contactNumber: '',
-      stream: '',
-      qualification: '',
-    });
-    const [showPayment, setShowPayment] = useState(false);
-
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleFormSubmit = async (e) => {
-      e.preventDefault();
-
-      // Validate fields
-      if (Object.values(formData).some((value) => !value)) {
-        toast({
-          title: 'Validation Error',
-          description: 'Please fill out all the fields before enrolling.',
-          variant: 'destructive',
-        });
-        return;
-      }
-
-      try {
-        // Save data to Google Sheets (adjust API endpoint as needed)
-        const res = await fetch('/api/googleSheetss', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-
-        const result = await res.json();
-
-        if (result.success) {
-          setShowPayment(true);
-          toast({
-            title: 'Data Saved',
-            description: 'Your details have been saved. Please proceed with the payment.',
-            variant: 'success',
-          });
-        } else {
-          throw new Error('Failed to save data');
-        }
-      } catch (error) {
-        console.error('Error submitting data:', error);
-        toast({
-          title: 'Error',
-          description: 'Failed to save event data. Please try again.',
-          variant: 'destructive',
-        });
-      }
-    };
-
-    const handlePaymentSuccess = () => {
-      toast({
-        title: 'Registration Complete',
-        description: 'Payment successful! Thank you for registering.',
-        variant: 'success',
-      });
-    };
-
-    const priceFloat = parseFloat(event.price.replace(/[^0-9.-]+/g, '').replace(',', ''));
-
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-auto">
-        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md overflow-hidden">
-          <h2 className="text-2xl font-bold mb-4">Register for {event.title}</h2>
-          <form onSubmit={handleFormSubmit}>
-            {Object.entries(formData).map(([key, value]) => (
-              <div key={key} className="mb-4">
-                <Label htmlFor={key} className="block text-lg font-medium mb-2 text-gray-300">
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </Label>
-                <Input
-                  type={key === 'contactNumber' ? 'tel' : 'text'}
-                  id={key}
-                  name={key}
-                  value={value}
-                  onChange={handleInputChange}
-                  className="w-full bg-gray-800 text-white border-gray-700 focus:border-indigo-500"
-                  required
-                />
-              </div>
-            ))}
-            <Button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white">
-              Submit
-            </Button>
-          </form>
-          {showPayment && (
-            <div className="mt-4">
-              <PaymentHandlerButton
-                finalAmt={priceFloat}
-                fullName={formData.name}
-                email=""
-                contact={formData.contactNumber}
-                stream={formData.stream}
-                qualification={formData.qualification}
-                onPaymentSuccess={handlePaymentSuccess}
-              />
-            </div>
-          )}
-          <Button onClick={handleCloseForm} variant="ghost" className="mt-4 text-gray-300 hover:text-white">
-            Close
-          </Button>
-        </div>
-      </div>
-    );
   };
 
   if (!event) {
@@ -265,9 +151,9 @@ const EventDetails = ({ id }) => {
 
       {/* Modal: EventForm */}
       {isFormVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <EventForm event={event} onClose={handleCloseForm} />
-        </div>
+        // <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <RegisterForm event={event} onClose={handleCloseForm} />
+        // </div>
       )}
     </div>
   );

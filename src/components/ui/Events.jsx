@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { FaCalendarAlt } from "react-icons/fa"
 import { useRouter, useSearchParams } from "next/navigation"
-import PaymentHandlerButton from "../../components/PaymentHandlerButton"
+// import PaymentHandlerButton from "../../components/PaymentHandlerButton"
 
 const Events = () => {
   const [events, setEvents] = useState([])
@@ -122,10 +122,10 @@ const Events = () => {
             ))}
           </ul>
           <div className="mt-4 w-full flex flex-col space-y-2">
-            <PaymentHandlerButton
+            {/* <PaymentHandlerButton
               finalAmt={price(event.price)}
               className="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold py-2 px-4 rounded"
-            />
+            /> */}
             <button
               onClick={() => handleMoreInfoClick(event.id)}
               className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 px-4 rounded"

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { Header } from '../../components/landing-page';
-import PaymentHandlerButton from '../../components/PaymentHandlerButton';
+// import PaymentHandlerButton from '../../components/PaymentHandlerButton';
 import axios from 'axios';
 
 const WorkshopCard = ({ workshop, isHovered, onHover, onLeave }) => {
@@ -67,10 +67,10 @@ const WorkshopCard = ({ workshop, isHovered, onHover, onLeave }) => {
           <p className="text-xs mt-1">{workshop.lastUpdated}</p>
 
           <div className="mt-4 w-full flex flex-col space-y-2">
-            <PaymentHandlerButton
+            {/* <PaymentHandlerButton
               finalAmt={priceValue}
               className="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold py-2 px-4 rounded"
-            />
+            /> */}
             <button
               onClick={handleMoreInfo}
               className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 px-4 rounded"
