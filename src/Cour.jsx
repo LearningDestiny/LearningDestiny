@@ -25,22 +25,23 @@ const Courses = () => {
   }, [])
 
   const fetchCourses = async () => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
     try {
-      const response = await fetch('/api/courses')
+      const response = await fetch("https://storage.googleapis.com/my-course-bucket-123/courses.json");
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json()
-      setCourses(data)
+      const data = await response.json();
+      console.log("Fetched courses:", data); // Log data to check image URLs
+      setCourses(data);
     } catch (error) {
-      console.error("Failed to fetch courses:", error)
-      setError("Failed to load courses. Please try again later.")
+      console.error("Failed to fetch courses:", error);
+      setError("Failed to load courses. Please try again later.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+};  
 
   const popularCourses = courses.slice(0, 3)
 
@@ -101,7 +102,7 @@ const Courses = () => {
       onMouseLeave={() => setHovered(null)}
     >
       <img
-        src={course.imageUrl}
+        src={course.image}
         alt={course.title}
         className="w-full h-48 object-cover"
       />
