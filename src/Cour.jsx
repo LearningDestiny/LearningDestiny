@@ -28,7 +28,7 @@ const Courses = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("https://storage.googleapis.com/my-course-bucket-123/courses.json");
+      const response = await fetch("/api/courses");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
