@@ -95,6 +95,13 @@ export default function ManageCourses() {
     }
   }
 
+  const handleAddHighlight = () => {
+    setEditingCourse(prev => {
+      if (!prev) return null
+      return { ...prev, highlights: [...prev.highlights, ''] }
+    })
+}
+
   const handleAddCourse = () => {
     setEditingCourse({
       id: 0,
