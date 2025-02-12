@@ -33,11 +33,23 @@ export default function ManageCourses() {
     if (!editingCourse) return
 
     try {
-      setLoading(true) // Show loading state during API call
+      setLoading(true)
+      const formData = new FormData();
+      formData.append("id", editingCourse.id);
+      formData.append("title", editingCourse.title);
+      formData.append("price", editingCourse.price);
+      formData.append("description", editingCourse.description);
+      formData.append("duration", editingCourse.duration);
+      formData.append("instructor", editingCourse.instructor);
+      if (editingCourse.imageFile) {
+        formData.append("image", editingCourse.imageFile);
+      }
+
       if (editingCourse.id) {
-        await axios.put(`/api/courses?id=${editingCourse.id}`, editingCourse)
+        // formData.append("id", editingCourse.id);
+        await axios.put("/api/courses", formData);
       } else {
-        await axios.post('/api/courses', editingCourse)
+        await axios.post("/api/courses", formData);
       }
       setEditingCourse(null)
       fetchCourses() // Refresh course list
@@ -47,14 +59,14 @@ export default function ManageCourses() {
     } finally {
       setLoading(false) // Hide loading state
     }
-}
+  }
 
   // Handle deleting a course
   const handleDeleteCourse = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this course?')) return
+    if (!window.confirm('Are you sure you want to delete this course?')) return;
     try {
       setLoading(true)
-      await axios.delete(`/api/courses?id=${id}`)
+      await axios.delete(`/api/courses/${id}`);
       fetchCourses()
     } catch (error) {
       console.error('Error deleting course:', error)
@@ -62,25 +74,25 @@ export default function ManageCourses() {
     } finally {
       setLoading(false)
     }
-}
+  }
 
   // Handle input field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setEditingCourse(prev => prev ? { ...prev, [name]: value } : null)
-}
+  }
 
   // Handle file upload for images (store as base64 for now)
   const handleImageChange = (e) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setEditingCourse(prev => prev ? { ...prev, imageUrl: reader.result } : null)
-      }
-      reader.readAsDataURL(file)
+        setEditingCourse(prev => prev ? { ...prev, imageUrl: reader.result, imageFile: file } : null);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   // Handle changing course highlights
   const handleHighlightChange = (index, value) => {
@@ -92,13 +104,13 @@ export default function ManageCourses() {
     })
   }
 
-   // Add new highlight field
-   const handleAddHighlight = () => {
+  // Add new highlight field
+  const handleAddHighlight = () => {
     setEditingCourse(prev => {
       if (!prev) return null
       return { ...prev, highlights: [...prev.highlights, ''] }
     })
-}
+  }
 
   const handleAddCourse = () => {
     setEditingCourse({
@@ -123,7 +135,7 @@ export default function ManageCourses() {
       >
         <FaPlus className="inline mr-2" /> Add New Course
       </button>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map(course => (
           <div key={course.id} className="bg-white rounded-lg shadow-md p-6">
