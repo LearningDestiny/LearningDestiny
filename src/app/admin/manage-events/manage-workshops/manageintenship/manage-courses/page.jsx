@@ -9,7 +9,7 @@ export default function ManageCourses() {
   const [courses, setCourses] = useState([])
   const [editingCourse, setEditingCourse] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [successMessage, setSuccessMessage] = useState('') // Add success message state
+  const [successMessage, setSuccessMessage] = useState('')
   const router = useRouter()
 
   useEffect(() => {
@@ -55,8 +55,8 @@ export default function ManageCourses() {
       }
       setEditingCourse(null)
       fetchCourses()
-      setSuccessMessage(editingCourse.id ? 'Course updated successfully!' : 'Course added successfully!') // Set success message
-      setTimeout(() => setSuccessMessage(''), 3000) // Clear message after 3 seconds
+      setSuccessMessage(editingCourse.id ? 'Course updated successfully!' : 'Course added successfully!')
+      setTimeout(() => setSuccessMessage(''), 3000)
     } catch (error) {
       console.error('Error saving course:', error)
       alert('Failed to save course. Please try again.')
@@ -93,22 +93,6 @@ export default function ManageCourses() {
       }
       reader.readAsDataURL(file)
     }
-  }
-
-  const handleHighlightChange = (index, value) => {
-    setEditingCourse(prev => {
-      if (!prev) return null
-      const newHighlights = [...prev.highlights]
-      newHighlights[index] = value
-      return { ...prev, highlights: newHighlights }
-    })
-  }
-
-  const handleAddHighlight = () => {
-    setEditingCourse(prev => {
-      if (!prev) return null
-      return { ...prev, highlights: [...prev.highlights, ''] }
-    })
   }
 
   const handleAddCourse = () => {

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Storage } from "@google-cloud/storage";
 
+// Initialize Google Cloud Storage
 const storage = new Storage({
   projectId: process.env.GOOGLE_PROJECT_ID,
   credentials: {
@@ -10,27 +11,27 @@ const storage = new Storage({
 });
 
 const bucketName = process.env.GOOGLE_STORAGE_BUCKET_NAME;
-const jsonFileName = "courses.json";
+const jsonFileName = "courses.json"; // JSON file to store course data
 
-// Helper function to fetch courses.json from Google Cloud Storage
+// Function to fetch course data from Google Cloud Storage
 async function getCoursesData() {
   try {
     const file = storage.bucket(bucketName).file(jsonFileName);
     const [exists] = await file.exists();
-    
+
     if (!exists) {
-      return []; // Return empty array if file doesn't exist
+      return []; // Return an empty array if the file does not exist
     }
 
     const [data] = await file.download();
-    return JSON.parse(data.toString());
+    return JSON.parse(data.toString()); // Convert JSON data to an object
   } catch (error) {
     console.error("Error fetching courses.json:", error);
     return [];
   }
 }
 
-// Helper function to save courses.json to Google Cloud Storage
+// Function to save updated courses.json to Google Cloud Storage
 async function saveCoursesData(courses) {
   try {
     const file = storage.bucket(bucketName).file(jsonFileName);
@@ -73,7 +74,7 @@ export async function POST(req) {
       const imageBuffer = Buffer.from(await image.arrayBuffer());
       const imageFileName = `images/${Date.now()}_${image.name}`;
       const file = storage.bucket(bucketName).file(imageFileName);
-      
+
       await file.save(imageBuffer, { contentType: image.type });
       imageUrl = `https://storage.googleapis.com/${bucketName}/${imageFileName}`;
     }
@@ -104,6 +105,7 @@ export async function PUT(req) {
     let formData;
     const contentType = req.headers.get("content-type");
 
+    // Handle both JSON and form-data requests
     if (contentType?.includes("multipart/form-data")) {
       formData = await req.formData();
     } else if (contentType?.includes("application/json")) {
@@ -140,7 +142,7 @@ export async function PUT(req) {
       const imageBuffer = Buffer.from(await image.arrayBuffer());
       const imageFileName = `images/${Date.now()}_${image.name}`;
       const file = storage.bucket(bucketName).file(imageFileName);
-      
+
       await file.save(imageBuffer, { contentType: image.type });
       updatedCourse.image = `https://storage.googleapis.com/${bucketName}/${imageFileName}`;
     }
