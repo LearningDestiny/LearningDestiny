@@ -1,51 +1,28 @@
 import { NextResponse } from "next/server";
-import { Storage } from "@google-cloud/storage";
+import fs from "fs/promises";
+import path from "path";
 
-// Initialize Google Cloud Storage
-const storage = new Storage({
-  projectId: process.env.GOOGLE_PROJECT_ID,
-  credentials: {
-    client_email: process.env.GOOGLE_APPLICATION_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_APPLICATION_PRIVATE_KEY.replace(/\\n/g, "\n"),
-  },
-});
+const filePath = path.join(process.cwd(), "public/data/courses.json");
 
-const bucketName = process.env.GOOGLE_STORAGE_BUCKET_NAME;
-const jsonFileName = "courses.json"; // JSON file to store course data
-
-// Function to fetch course data from Google Cloud Storage
-async function getCoursesData() {
+// Ensure the JSON file exists
+async function ensureFileExists() {
   try {
-    const file = storage.bucket(bucketName).file(jsonFileName);
-    const [exists] = await file.exists();
-
-    if (!exists) {
-      return []; // Return an empty array if the file does not exist
+    const fileExists = await fs.access(filePath).then(() => true).catch(() => false);
+    if (!fileExists) {
+      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      await fs.writeFile(filePath, JSON.stringify([], null, 2), "utf-8");
     }
-
-    const [data] = await file.download();
-    return JSON.parse(data.toString()); // Convert JSON data to an object
   } catch (error) {
-    console.error("Error fetching courses.json:", error);
-    return [];
-  }
-}
-
-// Function to save updated courses.json to Google Cloud Storage
-async function saveCoursesData(courses) {
-  try {
-    const file = storage.bucket(bucketName).file(jsonFileName);
-    await file.save(JSON.stringify(courses, null, 2), { contentType: "application/json" });
-  } catch (error) {
-    console.error("Error saving courses.json:", error);
+    console.error("Error ensuring file exists:", error);
   }
 }
 
 // GET: Fetch all courses
 export async function GET() {
   try {
-    const courses = await getCoursesData();
-    return NextResponse.json(courses, { status: 200 });
+    await ensureFileExists();
+    const data = await fs.readFile(filePath, "utf-8");
+    return NextResponse.json(JSON.parse(data), { status: 200 });
   } catch (error) {
     console.error("Error loading courses:", error);
     return NextResponse.json({ message: "Failed to load courses" }, { status: 500 });
@@ -55,6 +32,7 @@ export async function GET() {
 // POST: Add a new course
 export async function POST(req) {
   try {
+    await ensureFileExists();
     const formData = await req.formData();
     const title = formData.get("title");
     const price = formData.get("price");
@@ -67,16 +45,14 @@ export async function POST(req) {
       return NextResponse.json({ message: "Title, price, duration, and instructor are required" }, { status: 400 });
     }
 
-    let courses = await getCoursesData();
+    const data = await fs.readFile(filePath, "utf-8");
+    const courses = JSON.parse(data);
 
-    let imageUrl = "";
+    let imagePath = "";
     if (image && image.name) {
       const imageBuffer = Buffer.from(await image.arrayBuffer());
-      const imageFileName = `images/${Date.now()}_${image.name}`;
-      const file = storage.bucket(bucketName).file(imageFileName);
-
-      await file.save(imageBuffer, { contentType: image.type });
-      imageUrl = `https://storage.googleapis.com/${bucketName}/${imageFileName}`;
+      imagePath = `/images/${Date.now()}_${image.name}`;
+      await fs.writeFile(path.join(process.cwd(), "public" + imagePath), imageBuffer);
     }
 
     const newCourse = {
@@ -86,13 +62,13 @@ export async function POST(req) {
       description,
       duration,
       instructor,
-      image: imageUrl,
+      image: imagePath
     };
 
     courses.push(newCourse);
-    await saveCoursesData(courses);
+    await fs.writeFile(filePath, JSON.stringify(courses, null, 2), "utf-8");
 
-    return NextResponse.json({ message: "Course added successfully", image: imageUrl }, { status: 201 });
+    return NextResponse.json({ message: "Course added successfully", image: imagePath }, { status: 201 });
   } catch (error) {
     console.error("Error adding course:", error);
     return NextResponse.json({ message: "Failed to add course", error: error.toString() }, { status: 500 });
@@ -102,10 +78,11 @@ export async function POST(req) {
 // PUT: Update an existing course
 export async function PUT(req) {
   try {
+    await ensureFileExists();
+    
     let formData;
     const contentType = req.headers.get("content-type");
 
-    // Handle both JSON and form-data requests
     if (contentType?.includes("multipart/form-data")) {
       formData = await req.formData();
     } else if (contentType?.includes("application/json")) {
@@ -120,12 +97,13 @@ export async function PUT(req) {
       return NextResponse.json({ message: "Course ID is required" }, { status: 400 });
     }
 
-    let courses = await getCoursesData();
-    const courseIndex = courses.findIndex(course => course.id === id);
+    const data = await fs.readFile(filePath, "utf-8");
+    let courses = JSON.parse(data);
 
+    const courseIndex = courses.findIndex(course => course.id === id);
     if (courseIndex === -1) {
       return NextResponse.json({ message: "Course not found" }, { status: 404 });
-    }
+}
 
     // Update only fields that are provided
     const updatedCourse = {
@@ -140,15 +118,12 @@ export async function PUT(req) {
     const image = formData.get("image");
     if (image && image.name) {
       const imageBuffer = Buffer.from(await image.arrayBuffer());
-      const imageFileName = `images/${Date.now()}_${image.name}`;
-      const file = storage.bucket(bucketName).file(imageFileName);
-
-      await file.save(imageBuffer, { contentType: image.type });
-      updatedCourse.image = `https://storage.googleapis.com/${bucketName}/${imageFileName}`;
+      updatedCourse.image = `/images/${Date.now()}_${image.name}`;
+      await fs.writeFile(path.join(process.cwd(), "public" + updatedCourse.image), imageBuffer);
     }
 
     courses[courseIndex] = updatedCourse;
-    await saveCoursesData(courses);
+    await fs.writeFile(filePath, JSON.stringify(courses, null, 2), "utf-8");
 
     return NextResponse.json({ message: "Course updated successfully", image: updatedCourse.image }, { status: 200 });
   } catch (error) {
@@ -160,6 +135,7 @@ export async function PUT(req) {
 // DELETE: Remove a course
 export async function DELETE(req) {
   try {
+    await ensureFileExists();
     const { searchParams } = new URL(req.url);
     const id = Number(searchParams.get("id"));
 
@@ -167,14 +143,15 @@ export async function DELETE(req) {
       return NextResponse.json({ message: "Course ID is required" }, { status: 400 });
     }
 
-    let courses = await getCoursesData();
+    const data = await fs.readFile(filePath, "utf-8");
+    let courses = JSON.parse(data);
     const newCourses = courses.filter(course => course.id !== id);
 
     if (courses.length === newCourses.length) {
       return NextResponse.json({ message: "Course not found" }, { status: 404 });
     }
 
-    await saveCoursesData(newCourses);
+    await fs.writeFile(filePath, JSON.stringify(newCourses, null, 2), "utf-8");
     return NextResponse.json({ message: "Course deleted successfully" }, { status: 200 });
   } catch (error) {
     console.error("Error deleting course:", error);
