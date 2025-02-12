@@ -25,15 +25,17 @@ const Courses = () => {
   }, [])
 
   const fetchCourses = async () => {
+    console.log("Fetching courses..."); // Log before fetching
     setIsLoading(true);
     setError(null);
+  
     try {
-      const response = await fetch("/api/courses");
+      const response = await fetch("/api/courses", { cache: "no-store" }); // Disable caching
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Fetched courses:", data); // Log data to check image URLs
+      console.log("Fetched courses:", data); // Log response
       setCourses(data);
     } catch (error) {
       console.error("Failed to fetch courses:", error);
@@ -41,7 +43,7 @@ const Courses = () => {
     } finally {
       setIsLoading(false);
     }
-};  
+};
 
   const popularCourses = courses.slice(0, 3)
 
