@@ -8,7 +8,8 @@ import axios from 'axios'
 export default function ManageCourses() {
   const [courses, setCourses] = useState([])
   const [editingCourse, setEditingCourse] = useState(null)
-  const [loading, setLoading] = useState(false) // Add loading state for API calls
+  const [loading, setLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('') // Add success message state
   const router = useRouter()
 
   useEffect(() => {
@@ -17,10 +18,13 @@ export default function ManageCourses() {
 
   const fetchCourses = async () => {
     try {
+      setLoading(true)
       const response = await axios.get('/api/courses')
       setCourses(response.data)
     } catch (error) {
       console.error('Error fetching courses:', error)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -28,45 +32,44 @@ export default function ManageCourses() {
     setEditingCourse({ ...course })
   }
 
-  // Handle updating course (PUT for existing, POST for new)
   const handleUpdateCourse = async () => {
     if (!editingCourse) return
 
     try {
       setLoading(true)
-      const formData = new FormData();
-      formData.append("id", editingCourse.id);
-      formData.append("title", editingCourse.title);
-      formData.append("price", editingCourse.price);
-      formData.append("description", editingCourse.description);
-      formData.append("duration", editingCourse.duration);
-      formData.append("instructor", editingCourse.instructor);
+      const formData = new FormData()
+      formData.append("id", editingCourse.id)
+      formData.append("title", editingCourse.title)
+      formData.append("price", editingCourse.price)
+      formData.append("description", editingCourse.description)
+      formData.append("duration", editingCourse.duration)
+      formData.append("instructor", editingCourse.instructor)
       if (editingCourse.imageFile) {
-        formData.append("image", editingCourse.imageFile);
+        formData.append("image", editingCourse.imageFile)
       }
 
       if (editingCourse.id) {
-        // formData.append("id", editingCourse.id);
-        await axios.put("/api/courses", formData);
+        await axios.put("/api/courses", formData)
       } else {
-        await axios.post("/api/courses", formData);
+        await axios.post("/api/courses", formData)
       }
       setEditingCourse(null)
-      fetchCourses() // Refresh course list
+      fetchCourses()
+      setSuccessMessage(editingCourse.id ? 'Course updated successfully!' : 'Course added successfully!') // Set success message
+      setTimeout(() => setSuccessMessage(''), 3000) // Clear message after 3 seconds
     } catch (error) {
       console.error('Error saving course:', error)
       alert('Failed to save course. Please try again.')
     } finally {
-      setLoading(false) // Hide loading state
+      setLoading(false)
     }
   }
 
-  // Handle deleting a course
   const handleDeleteCourse = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this course?')) return;
+    if (!window.confirm('Are you sure you want to delete this course?')) return
     try {
       setLoading(true)
-      await axios.delete(`/api/courses/${id}`);
+      await axios.delete(`/api/courses?id=${id}`)
       fetchCourses()
     } catch (error) {
       console.error('Error deleting course:', error)
@@ -76,25 +79,22 @@ export default function ManageCourses() {
     }
   }
 
-  // Handle input field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setEditingCourse(prev => prev ? { ...prev, [name]: value } : null)
   }
 
-  // Handle file upload for images (store as base64 for now)
   const handleImageChange = (e) => {
-    const file = e.target.files?.[0];
+    const file = e.target.files?.[0]
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onloadend = () => {
-        setEditingCourse(prev => prev ? { ...prev, imageUrl: reader.result, imageFile: file } : null);
-      };
-      reader.readAsDataURL(file);
+        setEditingCourse(prev => prev ? { ...prev, imageUrl: reader.result, imageFile: file } : null)
+      }
+      reader.readAsDataURL(file)
     }
-  };
+  }
 
-  // Handle changing course highlights
   const handleHighlightChange = (index, value) => {
     setEditingCourse(prev => {
       if (!prev) return null
@@ -104,7 +104,6 @@ export default function ManageCourses() {
     })
   }
 
-  // Add new highlight field
   const handleAddHighlight = () => {
     setEditingCourse(prev => {
       if (!prev) return null
@@ -129,6 +128,11 @@ export default function ManageCourses() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-bold mb-8">Manage Courses</h1>
+      {successMessage && (
+        <div className="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+          <span className="block sm:inline">{successMessage}</span>
+        </div>
+      )}
       <button
         onClick={handleAddCourse}
         className="mb-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
@@ -136,6 +140,7 @@ export default function ManageCourses() {
         <FaPlus className="inline mr-2" /> Add New Course
       </button>
 
+      {loading && <p>Loading...</p>}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map(course => (
           <div key={course.id} className="bg-white rounded-lg shadow-md p-6">
