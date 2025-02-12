@@ -8,6 +8,7 @@ import axios from 'axios'
 export default function ManageCourses() {
   const [courses, setCourses] = useState([])
   const [editingCourse, setEditingCourse] = useState(null)
+  const [loading, setLoading] = useState(false) // Add loading state for API calls
   const router = useRouter()
 
   useEffect(() => {
@@ -27,36 +28,49 @@ export default function ManageCourses() {
     setEditingCourse({ ...course })
   }
 
+  // Handle updating course (PUT for existing, POST for new)
   const handleUpdateCourse = async () => {
     if (!editingCourse) return
 
     try {
+      setLoading(true) // Show loading state during API call
       if (editingCourse.id) {
         await axios.put(`/api/courses?id=${editingCourse.id}`, editingCourse)
       } else {
         await axios.post('/api/courses', editingCourse)
       }
       setEditingCourse(null)
-      fetchCourses()
+      fetchCourses() // Refresh course list
     } catch (error) {
       console.error('Error saving course:', error)
+      alert('Failed to save course. Please try again.')
+    } finally {
+      setLoading(false) // Hide loading state
     }
-  }
+}
 
+  // Handle deleting a course
   const handleDeleteCourse = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this course?')) return
     try {
+      setLoading(true)
       await axios.delete(`/api/courses?id=${id}`)
       fetchCourses()
     } catch (error) {
       console.error('Error deleting course:', error)
+      alert('Failed to delete course.')
+    } finally {
+      setLoading(false)
     }
-  }
+}
 
+  // Handle input field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setEditingCourse(prev => prev ? { ...prev, [name]: value } : null)
-  }
+}
 
+  // Handle file upload for images (store as base64 for now)
   const handleImageChange = (e) => {
     const file = e.target.files?.[0]
     if (file) {
@@ -68,6 +82,7 @@ export default function ManageCourses() {
     }
   }
 
+  // Handle changing course highlights
   const handleHighlightChange = (index, value) => {
     setEditingCourse(prev => {
       if (!prev) return null
@@ -77,12 +92,13 @@ export default function ManageCourses() {
     })
   }
 
-  const handleAddHighlight = () => {
+   // Add new highlight field
+   const handleAddHighlight = () => {
     setEditingCourse(prev => {
       if (!prev) return null
       return { ...prev, highlights: [...prev.highlights, ''] }
     })
-  }
+}
 
   const handleAddCourse = () => {
     setEditingCourse({
