@@ -82,7 +82,7 @@ const Popup = ({ message, onClose }) => (
       setPopupMessage('Enrollment successful! Payment has been processed.');
     };
   
-    const priceFloat = parseFloat(workshop.price.replace(/[^0-9.-]+/g, '').replace(',', ''));
+    const priceFloat = workshop?.price ? parseFloat(workshop.price.replace(/[^0-9.-]+/g, '').replace(',', '')) : 0;
   
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-auto">
