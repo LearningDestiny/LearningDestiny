@@ -10,7 +10,7 @@ const InternshipApplication = (internship) => {
     fullName: '',
     email: '',
     phoneNumber: '',
-    internshiprole: '',
+    internshiprole: internship.title,
     coverLetter: '',
     resume: null,
   });
