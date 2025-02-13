@@ -125,7 +125,7 @@ const Popup = ({ message, onClose }) => (
                 ))}
                 <Button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white">Submit</Button>
               </form>
-              <Button onClick={onClose} variant="ghost" className="mt-4 text-gray-300 hover:text-white">
+              <Button onClick={onClose} variant="ghost" className="mt-4 text-black-300 hover:text-white">
                 Close
               </Button>
             </>
