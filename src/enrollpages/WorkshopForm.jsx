@@ -19,7 +19,7 @@ const Popup = ({ message, onClose }) => (
     </div>
   );
   
-  const EnrollmentForm = ({ course, onClose }) => {
+  const EnrollmentForm = ({ workshop, onClose }) => {
     const [formData, setFormData] = useState({
       name: '',
       contactNumber: '',
@@ -129,6 +129,7 @@ const Popup = ({ message, onClose }) => (
                 contact={formData.contactNumber}
                 stream={formData.stream}
                 qualification={formData.qualification}
+                workshopName={formData.workshopName}
                 onPaymentSuccess={handlePaymentSuccess}
               />
             </div>

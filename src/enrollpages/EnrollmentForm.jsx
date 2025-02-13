@@ -130,6 +130,7 @@ const EnrollmentForm = ({ course, onClose }) => {
               contact={formData.contactNumber}
               stream={formData.stream}
               qualification={formData.qualification}
+              courseName={formData.courseName}
               onPaymentSuccess={handlePaymentSuccess}
             />
           </div>
