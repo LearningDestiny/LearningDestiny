@@ -10,7 +10,7 @@ const InternshipApplication = (internship) => {
     fullName: '',
     email: '',
     phoneNumber: '',
-    internshipName: internship.title,
+    internshiprole: internship.title,
     coverLetter: '',
     resume: null,
   });
@@ -61,7 +61,7 @@ const InternshipApplication = (internship) => {
           fullName: formData.fullName,
           email: formData.email,
           phoneNumber: formData.phoneNumber,
-          internshipName: formData.internshipName,
+          internshiprole: formData.internshiprole,
           coverLetter: formData.coverLetter,
         }),
       });
@@ -95,7 +95,7 @@ const InternshipApplication = (internship) => {
         fullName: '',
         email: '',
         phoneNumber: '',
-        internshipName: internship.title,
+        internshiprole: internship.title,
         coverLetter: '',
         resume: null,
       });
@@ -158,14 +158,14 @@ const InternshipApplication = (internship) => {
         </div>
 
         <div>
-          <label htmlFor="internshipName" className="block text-sm font-medium">
-            Internship Name
+          <label htmlFor="internshipRole" className="block text-sm font-medium">
+            Internship Role
           </label>
           <Input
             type="text"
-            id="internshipName"
-            name="internshipName"
-            value={formData.internshipName}
+            id="internshipRole"
+            name="internshipRole"
+            value={formData.internshiprole}
             onChange={handleChange}
             required
           />
