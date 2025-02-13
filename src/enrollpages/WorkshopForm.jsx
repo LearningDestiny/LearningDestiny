@@ -86,7 +86,14 @@ const Popup = ({ message, onClose }) => (
   
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-auto">
-        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md overflow-hidden">
+        <style jsx>{`
+        .formContainer {
+          width: 100%;
+          max-width: 500px;
+          margin: auto;
+        }
+      `}</style>
+        <div className="bg-background text-foreground p-6 rounded-lg shadow-lg formContainer">
           {isSubmitted ? (
             <div className="flex flex-col items-center">
               <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 text-4xl mb-4" />

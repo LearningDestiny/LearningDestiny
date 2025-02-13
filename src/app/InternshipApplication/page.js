@@ -168,7 +168,6 @@ const InternshipApplication = (internship) => {
             value={formData.internshipName}
             onChange={handleChange}
             required
-            disabled
           />
         </div>
 
