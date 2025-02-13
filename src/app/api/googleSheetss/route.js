@@ -25,11 +25,9 @@ export async function POST(req) {
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: "Sheet1!A1", // Adjust the range as needed
-      valueInputOption: "RAW",
+      valueInputOption: 'USER_ENTERED',
       resource: {
-        values: [
-          [data.name, data.number, data.qualification, data.stream], // Example row
-        ],
+        values: [Object.values(data)], // Send form data as values to the sheet
       },
     });
 
