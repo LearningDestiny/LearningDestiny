@@ -10,7 +10,7 @@ const InternshipApplication = (internship) => {
     fullName: '',
     email: '',
     phoneNumber: '',
-    internshiprole: internship.title,
+    internshiprole: '',
     coverLetter: '',
     resume: null,
   });
@@ -95,7 +95,7 @@ const InternshipApplication = (internship) => {
         fullName: '',
         email: '',
         phoneNumber: '',
-        internshiprole: internship.title,
+        internshiprole: '',
         coverLetter: '',
         resume: null,
       });
