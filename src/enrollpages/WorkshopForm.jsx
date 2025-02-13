@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import PaymentHandlerButton from '../components/PaymentHandlerButton';
@@ -19,25 +19,18 @@ const Popup = ({ message, onClose }) => (
     </div>
   );
   
-  const EnrollmentForm = ({ workshop, onClose }) => {
+  const EnrollmentForm = ({ course, onClose }) => {
     const [formData, setFormData] = useState({
       name: '',
       contactNumber: '',
       stream: '',
       qualification: '',
-      workshopName: '', // Initialize as empty
+      workshopName: course.title,
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPayment, setShowPayment] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const { toast } = useToast();
-
-    // Set workshopName when workshop prop changes
-  useEffect(() => {
-    if (workshop?.title) {
-      setFormData(prev => ({ ...prev, workshopName: workshop.title }));
-    }
-  }, [workshop]);
   
     const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -89,7 +82,7 @@ const Popup = ({ message, onClose }) => (
       setPopupMessage('Enrollment successful! Payment has been processed.');
     };
   
-    const priceFloat = workshop?.price ? parseFloat(workshop.price.replace(/[^0-9.-]+/g, '').replace(',', '')) : 0;
+    const priceFloat = parseFloat(course.price.replace(/[^0-9.-]+/g, '').replace(',', ''));
   
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-auto">
@@ -101,7 +94,7 @@ const Popup = ({ message, onClose }) => (
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-bold mb-4">Enroll in {workshop?.title || 'Workshop'}</h2>
+              <h2 className="text-2xl font-bold mb-4">Enroll in {course.title}</h2>
               <form onSubmit={handleFormSubmit}>
                 {Object.entries(formData).map(([key, value]) => (
                   <div key={key} className="mb-4">
@@ -116,7 +109,7 @@ const Popup = ({ message, onClose }) => (
                       onChange={handleInputChange}
                       className="w-full bg-gray-800 text-white border-gray-700 focus:border-indigo-500"
                       required
-                      disabled={key === 'workshopName'} // Disable workshop input field
+                      disabled={key === 'workshopName'}
                     />
                   </div>
                 ))}
