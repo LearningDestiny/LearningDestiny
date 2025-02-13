@@ -7,18 +7,18 @@ export async function POST(req) {
 
     // Ensure required environment variables are loaded
     if (
-      !process.env.LD_CLIENT_EMAIL ||
-      !process.env.LD_PRIVATE_KEY ||
+      !process.env.GOOGLE_CLIENT_EMAIL ||
+      !process.env.GOOGLE_PRIVATE_KEY ||
       !process.env.LD_SPREADSHEET_ID
     ) {
       throw new Error("Missing required environment variables");
     }
 
     // Check the private key format
-    console.log("Raw Private Key:", process.env.LD_PRIVATE_KEY);
+    console.log("Raw Private Key:", process.env.GOOGLE_PRIVATE_KEY);
 
     // Ensure correct formatting of private key
-    const formattedPrivateKey = process.env.LD_PRIVATE_KEY.split("\\n").join("\n");
+    const formattedPrivateKey = process.env.GOOGLE_PRIVATE_KEY.split("\\n").join("\n");
     console.log("Formatted Private Key:", formattedPrivateKey);
 
     // Initialize Google Sheets API credentials
