@@ -92,6 +92,9 @@ const Popup = ({ message, onClose }) => (
           max-width: 500px;
           margin: auto;
         }
+          .text-black {
+          color: black;
+        }
       `}</style>
         <div className="bg-background text-foreground p-6 rounded-lg shadow-lg formContainer">
           {isSubmitted ? (
@@ -105,7 +108,7 @@ const Popup = ({ message, onClose }) => (
               <form onSubmit={handleFormSubmit}>
                 {Object.entries(formData).map(([key, value]) => (
                   <div key={key} className="mb-4">
-                    <Label htmlFor={key} className="block text-lg font-medium mb-2 text-gray-300">
+                    <Label htmlFor={key} className="block text-lg font-medium mb-2 text-black-300">
                       {key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                     <Input
