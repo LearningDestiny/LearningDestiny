@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import PaymentHandlerButton from '../components/PaymentHandlerButton';
@@ -25,12 +25,19 @@ const Popup = ({ message, onClose }) => (
       contactNumber: '',
       stream: '',
       qualification: '',
-      workshopName: workshop?.title || '' //New field for workshop
+      workshopName: '', // Initialize as empty
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPayment, setShowPayment] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const { toast } = useToast();
+
+    // Set workshopName when workshop prop changes
+  useEffect(() => {
+    if (workshop?.title) {
+      setFormData(prev => ({ ...prev, workshopName: workshop.title }));
+    }
+  }, [workshop]);
   
     const handleInputChange = (e) => {
       const { name, value } = e.target;
