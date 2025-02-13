@@ -6,7 +6,7 @@
       "date": "November 15, 2024",
       "location": "New York City, NY",
       "price": "Free",
-      "imageUrl": "https://www.rrce.org/blog/wp-content/uploads/2022/11/Artifical-Intelligence.-Machine-Learning-at-RRCE.png",
+      "imageUrl": "/AI Event.jpeg",
       "description": "A one-day summit to explore the latest trends and innovations in AI and Machine Learning.",
       "agenda": [
         {
@@ -38,7 +38,7 @@
       "date": "December 5, 2024",
       "location": "Online",
       "price": "1,999 Rs",
-      "imageUrl": "https://media.geeksforgeeks.org/wp-content/uploads/20231205165904/web-development-image.webp",
+      "imageUrl": "/Web Development Event.jpeg",
       "description": "A 3-day bootcamp to master the fundamentals of web development.",
       "agenda": [
         {
