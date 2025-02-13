@@ -4,20 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { Header } from '../../components/landing-page';
 import { FaLink } from 'react-icons/fa';
 import axios from 'axios';
+import GraduateRoleForm from '../../enrollpages/GraduateRoleForm';
 
 const GraduateRoles = () => {
   const [graduateRoles, setGraduateRoles] = useState([]);
   const [selectedRole, setSelectedRole] = useState(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    education: '',
-    resume: null,
-    coverLetter: ''
-  });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFormVisible, setFormVisible] = useState(false);
   const [showIconsForRole, setShowIconsForRole] = useState(null);
 
   useEffect(() => {
@@ -35,36 +27,15 @@ const GraduateRoles = () => {
 
   const handleEnrollmentClick = (role) => {
     setSelectedRole(role);
-    setIsModalOpen(true);
+    setFormVisible(true);
+  };
+
+  const handleCloseForm = () => {
+    setFormVisible(false);
   };
 
   const handleShareClick = (roleId) => {
     setShowIconsForRole(showIconsForRole === roleId ? null : roleId);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData({ ...formData, [name]: files[0] });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Enrollment successful for ${selectedRole.title}`);
-    setIsModalOpen(false);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      education: '',
-      resume: null,
-      coverLetter: ''
-    });
   };
 
   const copyLink = () => {
@@ -143,100 +114,7 @@ const GraduateRoles = () => {
         </div>
       </main>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h3 className="text-xl font-semibold mb-4">Enroll for {selectedRole?.title}</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="name">Name</label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Your Name" 
-                  value={formData.name} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  placeholder="Your Email" 
-                  value={formData.email} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="phone">Phone Number</label>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Your Phone Number" 
-                  value={formData.phone} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="address">Address</label>
-                <input 
-                  type="text" 
-                  name="address" 
-                  placeholder="Your Address" 
-                  value={formData.address} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="education">Education Level</label>
-                <input 
-                  type="text" 
-                  name="education" 
-                  placeholder="Your Education Level" 
-                  value={formData.education} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="resume">Resume</label>
-                <input 
-                  type="file" 
-                  name="resume" 
-                  onChange={handleFileChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" htmlFor="coverLetter">Cover Letter</label>
-                <textarea 
-                  name="coverLetter" 
-                  placeholder="Your Cover Letter" 
-                  value={formData.coverLetter} 
-                  onChange={handleInputChange} 
-                  className="w-full p-2 border border-gray-300 rounded" 
-                  required 
-                />
-              </div>
-              <div className="flex justify-between">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      {isFormVisible && <GraduateRoleForm role={selectedRole} onClose={handleCloseForm} />}
       <footer className="bg-gray-800 text-white text-center py-4">
         <p>&copy; 2025 Learning Destiny Pvt Ltd. All rights reserved.</p>
       </footer>
