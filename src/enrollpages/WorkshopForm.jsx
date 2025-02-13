@@ -25,6 +25,7 @@ const Popup = ({ message, onClose }) => (
       contactNumber: '',
       stream: '',
       qualification: '',
+      workshopName: workshop.title, //New field for workshop
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPayment, setShowPayment] = useState(false);
@@ -93,7 +94,7 @@ const Popup = ({ message, onClose }) => (
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-bold mb-4">Enroll in {course.title}</h2>
+              <h2 className="text-2xl font-bold mb-4">Enroll in {workshop.title}</h2>
               <form onSubmit={handleFormSubmit}>
                 {Object.entries(formData).map(([key, value]) => (
                   <div key={key} className="mb-4">
@@ -108,6 +109,7 @@ const Popup = ({ message, onClose }) => (
                       onChange={handleInputChange}
                       className="w-full bg-gray-800 text-white border-gray-700 focus:border-indigo-500"
                       required
+                      disabled={key === 'workshopName'} // Disable workshop input field
                     />
                   </div>
                 ))}

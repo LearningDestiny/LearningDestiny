@@ -15,7 +15,7 @@ export async function POST(req) {
     };
 
     const sheets = google.sheets('v4');
-    const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
+    const SPREADSHEET_ID = process.env.NEW_GOOGLE_SHEET_ID;
 
     // Authorize the API client with the service account
     const auth = new google.auth.JWT(

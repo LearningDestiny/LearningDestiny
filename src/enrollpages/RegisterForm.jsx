@@ -25,6 +25,7 @@ const Popup = ({ message, onClose }) => (
       contactNumber: '',
       stream: '',
       qualification: '',
+      eventName: event.title, //New field for event
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPayment, setShowPayment] = useState(false);
@@ -108,6 +109,7 @@ const Popup = ({ message, onClose }) => (
                       onChange={handleInputChange}
                       className="w-full bg-gray-800 text-white border-gray-700 focus:border-indigo-500"
                       required
+                      disabled={key === 'eventName'} // Disable event input field
                     />
                   </div>
                 ))}
