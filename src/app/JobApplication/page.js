@@ -143,8 +143,30 @@ const JobApplication = () => {
     });
 
     try {
-     //Upload to Google Drive
-      const driveResponse = await fetch('/api/uploadToDrive', {
+      //  Step 1: Submit data to Google Sheets first
+      const googleSheetsResponse = await fetch('/api/googleSheetb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber,
+        }),
+      });
+
+      if (!googleSheetsResponse.ok) {
+        const errorData = await googleSheetsResponse.json();
+        throw new Error(errorData.error || 'Failed to submit data to Google Sheets');
+      }
+
+      // Step 2: Upload to Google Drive
+      const driveResponse = await fetch('/api/uploadTodrivee', {
         method: 'POST',
         body: formDataObj,
       });
@@ -215,13 +237,13 @@ const JobApplication = () => {
         <Input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
         <Input type="file" name="resume" id="resume" onChange={handleChange} required accept=".pdf,.doc,.docx" className="hidden" />
         <div className="flex flex-col">
-        <label
-          htmlFor="resume"
-          className="block w-fit px-4 py-2 bg-gray-400 text-black text-sm font-semibold cursor-pointer hover:bg-gray-500 transition duration-300"
-        >
-          Upload Resume
-        </label>
-        <span className="text-sm text-gray-600 mt-1">{resumeName}</span>
+          <label
+            htmlFor="resume"
+            className="block w-fit px-4 py-2 bg-gray-400 text-black text-sm font-semibold cursor-pointer hover:bg-gray-500 transition duration-300"
+          >
+            Upload Resume
+          </label>
+          <span className="text-sm text-gray-600 mt-1">{resumeName}</span>
         </div>
         <Button type="submit" disabled={isSubmitting} className="w-full bg-gray-800 text-white py-2 rounded">
           {isSubmitting ? 'Submitting...' : 'Submit'}
