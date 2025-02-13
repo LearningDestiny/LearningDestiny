@@ -120,14 +120,14 @@ const GraduateRoleForm = ({ role, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50 p-4 overflow-auto">
-      <div className="bg-background text-foreground p-6 rounded-lg shadow-lg w-full max-w-md max-h-screen overflow-y-auto">
-        {isSubmitted ? (
-          <div className="flex flex-col items-center">
-            <FontAwesomeIcon icon={faCheckCircle} className="text-green-500 text-4xl mb-4" />
-            <h2 className="text-2xl font-bold">Thank you for enrolling!</h2>
-          </div>
-        ) : (
-          <>
+      <style jsx>{`
+        .formContainer {
+          width: 100%;
+          max-width: 500px;
+          margin: auto;
+        }
+      `}</style>
+     <div className="bg-background text-foreground p-6 rounded-lg shadow-lg formContainer">
             <h2 className="text-2xl font-bold mb-4">Enroll for {role.title}</h2>
             <form onSubmit={handleFormSubmit}>
               {Object.entries(formData).map(([key, value]) => (
@@ -164,9 +164,7 @@ const GraduateRoleForm = ({ role, onClose }) => {
             <Button onClick={onClose} variant="link" className="mt-4">
               Close
             </Button>
-          </>
-        )}
-      </div>
+            </div>
       {popupMessage && <Popup message={popupMessage} onClose={() => setPopupMessage('')} />}
     </div>
   );
