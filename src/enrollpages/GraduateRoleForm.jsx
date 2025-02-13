@@ -135,16 +135,28 @@ const GraduateRoleForm = ({ role, onClose }) => {
                   <Label htmlFor={key} className="block text-lg font-medium mb-2">
                     {key.charAt(0).toUpperCase() + key.slice(1)}
                   </Label>
-                  <Input
-                    type={key === 'phone' ? 'tel' : 'text'}
-                    id={key}
-                    name={key}
-                    value={value}
-                    onChange={handleInputChange}
-                    className="w-full"
-                    required
-                    disabled={key === 'roleName'} // Disable roleName input field
-                  />
+                  {key === 'resume' ? (
+                    <Input
+                      type="file"
+                      id={key}
+                      name={key}
+                      onChange={handleInputChange}
+                      className="w-full"
+                      required
+                      accept=".pdf,.doc,.docx"
+                    />
+                  ) : (
+                    <Input
+                      type={key === 'phone' ? 'tel' : 'text'}
+                      id={key}
+                      name={key}
+                      value={value}
+                      onChange={handleInputChange}
+                      className="w-full"
+                      required
+                      disabled={key === 'roleName'} // Disable roleName input field
+                    />
+                  )}
                 </div>
               ))}
               <Button type="submit">Submit</Button>
