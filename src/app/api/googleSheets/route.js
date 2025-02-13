@@ -23,7 +23,7 @@ export async function POST(req) {
 
     // Initialize Google Sheets API credentials
     const auth = new google.auth.JWT(
-      process.env.LD_CLIENT_EMAIL,
+      process.env.GOOGLE_CLIENT_EMAIL,
       null,
       formattedPrivateKey,
       ['https://www.googleapis.com/auth/spreadsheets']
