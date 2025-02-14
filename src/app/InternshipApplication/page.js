@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { useToast } from "../../hooks/use-toast";
@@ -165,13 +165,13 @@ const InternshipApplication = (internship) => {
         </div>
 
         <div>
-          <label htmlFor="internshipRole" className="block text-sm font-medium">
+          <label htmlFor="internshiprole" className="block text-sm font-medium">
             Internship Role
           </label>
           <Input
             type="text"
-            id="internshipRole"
-            name="internshipRole"
+            id="internshiprole"
+            name="internshiprole"
             value={formData.internshiprole}
             onChange={handleChange}
             required
