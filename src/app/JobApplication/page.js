@@ -107,6 +107,9 @@ const JobApplication = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    if (name === "phoneNumber" && !/^\d*$/.test(value)) {
+      return; // Prevent non-numeric input
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: files ? files[0] : value,

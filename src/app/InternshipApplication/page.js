@@ -16,9 +16,12 @@ const InternshipApplication = (internship) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    // Allow only numbers in phone number field
+    if (name === "phoneNumber" && !/^\d*$/.test(value)) return;
     setFormData(prevData => ({
       ...prevData,
       [name]: files ? files[0] : value,
@@ -99,6 +102,9 @@ const InternshipApplication = (internship) => {
         coverLetter: '',
         resume: null,
       });
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } catch (error) {
       console.error('Error:', error);
       toast({
@@ -153,6 +159,7 @@ const InternshipApplication = (internship) => {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
+            onInput={(e) => (e.target.value = e.target.value.replace(/\D/g, ''))} // Only numbers
             required
           />
         </div>
@@ -196,6 +203,7 @@ const InternshipApplication = (internship) => {
             onChange={handleChange}
             required
             accept=".pdf,.doc,.docx"
+            ref={fileInputRef}
           />
         </div>
 

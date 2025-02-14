@@ -22,7 +22,7 @@ const GraduateRoleForm = ({ role, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phone: '', // Contact field updated to accept only numbers
     address: '',
     education: '',
     resume: null,
@@ -32,9 +32,13 @@ const GraduateRoleForm = ({ role, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const { toast } = useToast();
+  const fileInputRef = useRef(null); // Ref to reset file input
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
+    if (name === "phone" && !/^\d*$/.test(value)) {
+      return; // Prevents non-numeric input
+    }
     setFormData((prev) => ({ ...prev, [name]: files ? files[0] : value }));
   };
 
@@ -106,6 +110,10 @@ const GraduateRoleForm = ({ role, onClose }) => {
         resume: null,
         coverLetter: '',
       });
+      // Reset file input field manually
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     } catch (error) {
       console.error('Error:', error);
       toast({
@@ -140,6 +148,7 @@ const GraduateRoleForm = ({ role, onClose }) => {
                       type="file"
                       id={key}
                       name={key}
+                      ref={fileInputRef} // Attach ref to file input
                       onChange={handleInputChange}
                       className="w-full"
                       required
@@ -152,6 +161,7 @@ const GraduateRoleForm = ({ role, onClose }) => {
                       name={key}
                       value={value}
                       onChange={handleInputChange}
+                      onInput={(e) => (e.target.value = e.target.value.replace(/\D/g, ""))} // Enforces numeric input
                       className="w-full"
                       required
                       disabled={key === 'roleName'} // Disable roleName input field

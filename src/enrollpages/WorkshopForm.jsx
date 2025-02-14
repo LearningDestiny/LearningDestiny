@@ -22,7 +22,7 @@ const Popup = ({ message, onClose }) => (
 const EnrollmentForm = ({ course, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    contactNumber: '',
+    contactNumber: '',// Contact field updated to accept only numbers
     stream: '',
     qualification: '',
     workshopName: course.title,
@@ -32,10 +32,18 @@ const EnrollmentForm = ({ course, onClose }) => {
   const [popupMessage, setPopupMessage] = useState('');
   const { toast } = useToast();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  
+ // Handles input change and ensures only numbers in contact field
+ const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  if (name === 'contactNumber') {
+    // Allow only numeric values
+    const numericValue = value.replace(/\D/g, '');
+    setFormData((prev) => ({ ...prev, [name]: numericValue }));
+  } else {
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  }
+};
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -117,6 +125,7 @@ const EnrollmentForm = ({ course, onClose }) => {
                     name={key}
                     value={value}
                     onChange={handleInputChange}
+                    pattern={key === 'contactNumber' ? '[0-9]*' : undefined} // Enforces only numbers
                     className="w-full bg-gray-800 text-white border-gray-700 focus:border-indigo-500"
                     required
                     disabled={key === 'workshopName'}
