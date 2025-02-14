@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { useToast } from "../../hooks/use-toast";
@@ -22,6 +22,7 @@ const JobApplication = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const fileInputRef = useRef(null);
 
   const jobData = {
     1: {
@@ -237,7 +238,7 @@ const JobApplication = () => {
         <Input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
         <Input type="text" name="state" placeholder="State" value={formData.state} onChange={handleChange} required />
         <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <Input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+        <Input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} ref={fileInputRef} required />
         <Input type="file" name="resume" id="resume" onChange={handleChange} required accept=".pdf,.doc,.docx" className="hidden" />
         <div className="flex flex-col">
           <label

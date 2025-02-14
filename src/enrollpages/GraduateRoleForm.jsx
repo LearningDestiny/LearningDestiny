@@ -108,7 +108,14 @@ const GraduateRoleForm = ({ role, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50 p-4 overflow-auto">
-      <div className="bg-background text-foreground p-6 rounded-lg shadow-lg max-w-md w-full">
+      <style jsx>{`
+        .formContainer {
+          width: 100%;
+          max-width: 500px;
+          margin: auto;
+        }
+      `}</style>
+      <div className="bg-background text-foreground p-6 rounded-lg shadow-lg formContainer">
         <h2 className="text-2xl font-bold mb-4">Enroll for {role.title}</h2>
         <form onSubmit={handleFormSubmit}>
           {Object.keys(formData).map((key) => (
