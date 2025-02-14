@@ -22,7 +22,7 @@ const Popup = ({ message, onClose }) => (
 const EnrollmentForm = ({ course, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    contact: '',
+    contact: '', // Contact field updated to accept only numbers
     stream: '',
     qualification: '',
     courseName: course.title, // Added course name field
@@ -32,10 +32,18 @@ const EnrollmentForm = ({ course, onClose }) => {
   const [popupMessage, setPopupMessage] = useState('');
   const { toast } = useToast();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+ // Handles input change and ensures only numbers in contact field
+ const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  if (name === 'contact') {
+    // Allow only numeric values
+    const numericValue = value.replace(/\D/g, '');
+    setFormData((prev) => ({ ...prev, [name]: numericValue }));
+  } else {
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  }
+};
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -110,11 +118,12 @@ const EnrollmentForm = ({ course, onClose }) => {
                     {key.charAt(0).toUpperCase() + key.slice(1)}
                   </Label>
                   <Input
-                    type={key === 'contactNumber' ? 'tel' : 'text'}
+                    type={key === 'contact' ? 'tel' : 'text'}
                     id={key}
                     name={key}
                     value={value}
                     onChange={handleInputChange}
+                    pattern={key === 'contact' ? '[0-9]*' : undefined} // Enforces only numbers
                     className="w-full"
                     required
                     disabled={key === 'courseName'} // Disable courseName input field

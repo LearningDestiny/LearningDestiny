@@ -587,9 +587,9 @@ function Workshop() {
                         </ul>
                       </div>
                       <div className="mt-4 w-full flex flex-col space-y-2">
-                        <PaymentHandlerButton finalAmt={priceValue(workshop.price)}
+                        {/* <PaymentHandlerButton finalAmt={priceValue(workshop.price)}
                           className="mt-2 w-full bg-blue-500 text-white py-2 rounded lg:py-2 sm:py-2"
-                        />
+                        /> */}
                         <button
                           onClick={() => router.push(`/workshops/${workshop.id}`)}
                           className="w-full bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-2 px-4 rounded transition-colors duration-300"
@@ -680,30 +680,25 @@ function Events() {
                         </ul>
                       </div>
                       <div className="mt-4 w-full flex flex-col space-y-2">
-                        {event.id === 1 ? (
-                          <button
-                            className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg text-sm"
-                          >
-                            Get For Free
-                          </button>
-                        ) : (
-                          <PaymentHandlerButton
-                            finalAmt={priceValue(event.price)}
-                            className="mt-2 w-full bg-blue-500 text-white py-2 rounded lg:py-2 sm:py-2"
-                          />
-                        )}
-                        <button
-                          onClick={() => router.push(`/event/${event.id}`)}
-                          className="w-full bg-green-600 text-white py-2 rounded-md text-sm"
-                        >
-                          More Info
-                        </button>
-                      </div>
-                    </div>
-                  )}
+                    {event.id === 1 && (
+                      <button
+                        className="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg text-sm"
+                      >
+                        Get For Free
+                      </button>
+                    )}
+                    <button
+                      onClick={() => router.push(`/event/${event.id}`)}
+                      className="w-full bg-green-600 text-white py-2 rounded-md text-sm"
+                    >
+                      More Info
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )}
+            </div>
+          </div>
+        ))}
             <div className="flex-shrink-0 w-4 md:w-6" aria-hidden="true"></div>
           </div>
         </div>
