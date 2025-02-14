@@ -9,6 +9,7 @@ import { useToast } from "../../hooks/use-toast";
 const JobApplication = () => {
   const searchParams = useSearchParams();
   const [jobDetails, setJobDetails] = useState(null);
+  const [resumeName, setResumeName] = useState("No file chosen");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
