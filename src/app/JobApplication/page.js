@@ -202,6 +202,7 @@ const JobApplication = () => {
       if (fileInputRef.current) {
         fileInputRef.current.value = ""; // Clear the file input field
       }
+      setResumeName("No file chosen"); 
     } catch (error) {
       console.error('Error:', error);
       toast({
