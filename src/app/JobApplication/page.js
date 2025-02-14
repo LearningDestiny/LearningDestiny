@@ -9,7 +9,6 @@ import { useToast } from "../../hooks/use-toast";
 const JobApplication = () => {
   const searchParams = useSearchParams();
   const [jobDetails, setJobDetails] = useState(null);
-  const [resumeName, setResumeName] = useState("No file chosen");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -199,6 +198,9 @@ const JobApplication = () => {
         phoneNumber: "",
         resume: null,
       });
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Clear the file input field
+      }
     } catch (error) {
       console.error('Error:', error);
       toast({
@@ -238,8 +240,8 @@ const JobApplication = () => {
         <Input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
         <Input type="text" name="state" placeholder="State" value={formData.state} onChange={handleChange} required />
         <Input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <Input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} ref={fileInputRef} required />
-        <Input type="file" name="resume" id="resume" onChange={handleChange} required accept=".pdf,.doc,.docx" className="hidden" />
+        <Input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+        <Input ref={fileInputRef} type="file" name="resume" id="resume" onChange={handleChange} required accept=".pdf,.doc,.docx" className="hidden" />
         <div className="flex flex-col">
           <label
             htmlFor="resume"
