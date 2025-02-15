@@ -14,8 +14,8 @@ body {
 
 @media (max-width: 640px) {
   .course-card {
-    transform: scale(0.75); /* Shrink card size */
-    width: 40%; /* Adjust width */
+    transform: scale(0.65); /* Shrink card size */
+    width: 48%; /* Adjust width */
   }
 }
 
