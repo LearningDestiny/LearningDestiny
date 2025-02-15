@@ -16,7 +16,7 @@ body {
   .course-card {
     transform: scale(0.55); /* Shrink card size */
     width: 47%;  /* Adjust width */
-    margin: 0 auto; /* Centers the cards */
+    /* margin-left: -4px; Centers the cards */
   }
   .grid {
     gap: 2px; /* Reduce the space between rows */
