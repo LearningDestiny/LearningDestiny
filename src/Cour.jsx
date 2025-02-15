@@ -215,7 +215,8 @@ const Courses = () => {
               {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"> */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                 {filteredCourses.map((course) => (
-                  <div key={course.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+                  // <div key={course.id} className="w-full">
+                  <div key={course.id} className="w-full sm:w-auto md:w-1/2 lg:w-1/3 xl:w-1/4 scale-75 sm:scale-100">
                     <CourseCard
                       course={course}
                       isHovered={hoveredAllCourse}

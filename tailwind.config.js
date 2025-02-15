@@ -55,9 +55,6 @@ module.exports = {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			screens: {
-				mobile: '320px',
-			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
