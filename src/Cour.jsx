@@ -212,9 +212,9 @@ const Courses = () => {
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
 
               {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-0">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 px-2 md:px-0">
                 {filteredCourses.map((course) => (
-                  <div key={course.id} className="w-full">
+                  <div key={course.id} className="w-full px-1 sm:px-2">
                     <CourseCard
                       course={course}
                       isHovered={hoveredAllCourse}
