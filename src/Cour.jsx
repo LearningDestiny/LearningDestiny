@@ -212,7 +212,7 @@ const Courses = () => {
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
 
               {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-4 md:gap-8 px-4 md:px-0">
+              <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-6 px-4 md:px-0">
                 {filteredCourses.map((course) => (
                   <div key={course.id} className="min-w-[80%] sm:min-w-[45%] md:min-w-0">
                     <CourseCard
