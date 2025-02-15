@@ -12,6 +12,13 @@ body {
   }
 }
 
+@media (max-width: 640px) {
+  .course-card {
+    transform: scale(0.5); /* Further shrinks the card */
+    width: 60%; /* Reduces the width more */
+  }
+}
+
 /* Custom scrollbar styles */
 .custom-scrollbar {
   scrollbar-width: thin;
