@@ -19,7 +19,7 @@ body {
     margin: 0 auto; /* Centers the cards */
   }
   .grid {
-    gap: 4px; /* Reduce the space between rows */
+    gap: 2px; /* Reduce the space between rows */
   }
 }
 
