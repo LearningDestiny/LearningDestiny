@@ -1,45 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://www.learningdestiny.in/</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/landing-page</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>2</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/Courses</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/Events</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/workshop</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/inten</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>https://www.learningdestiny.in/sign-in</loc>
-        <lastmod>2024-12-20T15:02:24.021Z</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1</priority>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://learningdestiny.in/</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/sign-in</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/AboutUs</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/Courses</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/inten</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/workshop</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/Events</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/Login</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/Terms</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/policy</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/shipping</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://learningdestiny.in/cancallation</loc>
+<lastmod>2025-02-15T03:21:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
 </urlset>
