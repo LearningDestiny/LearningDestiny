@@ -211,15 +211,14 @@ const Courses = () => {
             <section>
               <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
 
-             {/* Grid layout: 2 courses per row on mobile, 3 on tablets, 4 on desktops */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 px-3 sm:px-4">
+              {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
                 {filteredCourses.map((course) => (
-                   <div key={course.id} className="w-full max-w-xs h-auto mx-auto">
+                  <div key={course.id} className="w-full">
                     <CourseCard
                       course={course}
                       isHovered={hoveredAllCourse}
                       setHovered={setHoveredAllCourse}
-                      className="transform scale-90 sm:scale-95 md:scale-100"
                     />
                   </div>
                 ))}
