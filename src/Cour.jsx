@@ -219,12 +219,19 @@ const Courses = () => {
                       course={course}
                       isHovered={hoveredAllCourse}
                       setHovered={setHoveredAllCourse}
-                      className="scale-90 sm:scale-95 md:scale-100"
+                      className="scale-90 sm:scale-95 md:scale-100 mobile:scale-75"
                     />
                   </div>
                 ))}
               </div>
             </section>
+            <style jsx>{`
+             @media (max-width: 320px) {
+             .mobile\\:scale-75 {
+             transform: scale(0.75);
+    }
+  }
+`}</style>
           </div>
           {/* Filter Section - Desktop View */}
           <div className="lg:w-1/4">
