@@ -212,9 +212,10 @@ const Courses = () => {
               <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
 
               {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
+              {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"> */}
+              <div className="flex overflow-x-auto gap-2">
                 {filteredCourses.map((course) => (
-                  <div key={course.id} className="w-full max-w-[50px] sm:max-w-none scale-75 sm:scale-100">
+                  <div key={course.id}  className="w-[250px] flex-shrink-0">
                     <CourseCard
                       course={course}
                       isHovered={hoveredAllCourse}
