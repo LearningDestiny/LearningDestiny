@@ -219,7 +219,7 @@ const Courses = () => {
                       course={course}
                       isHovered={hoveredAllCourse}
                       setHovered={setHoveredAllCourse}
-                      className="scale-90 sm:scale-95 md:scale-100 mobile:scale-75"
+                      className="transform scale-90 sm:scale-95 md:scale-100"
                     />
                   </div>
                 ))}
