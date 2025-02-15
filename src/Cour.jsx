@@ -184,11 +184,6 @@ const Courses = () => {
           </form>
         </div>
 
-        {/* Filter Section - Mobile View */}
-        <div className="md:hidden mb-6">
-          <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
-        </div>
-
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-3/4 pr-0 lg:pr-8">
 
@@ -227,7 +222,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section - Desktop View */}
-          <div className="lg:w-1/4 md:block">
+          <div className="lg:w-1/4">
             <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
         </div>
