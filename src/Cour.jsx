@@ -190,39 +190,39 @@ const Courses = () => {
 
             {searchQuery === "" && selectedCategories.length === 0 && (
               <section className="mb-12">
-              <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
-            
-              {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-6 px-4 md:px-0">
-                {popularCourses.map((course) => (
-                  /* Each course item: Ensures correct width on mobile, normal on desktop */
-                  <div key={course.id} className="min-w-[80%] sm:min-w-[45%] md:min-w-0">
-                    <CourseCard
-                      course={course}
-                      isHovered={hoveredPopularCourse}
-                      setHovered={setHoveredPopularCourse}
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
+                <h2 className="text-4xl font-bold mb-8 text-center text-black">Popular Courses</h2>
+
+                {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
+                <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:gap-6 px-4 md:px-0">
+                  {popularCourses.map((course) => (
+                    /* Each course item: Ensures correct width on mobile, normal on desktop */
+                    <div key={course.id} className="min-w-[80%] sm:min-w-[45%] md:min-w-0">
+                      <CourseCard
+                        course={course}
+                        isHovered={hoveredPopularCourse}
+                        setHovered={setHoveredPopularCourse}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
             )}
             {/* All Courses Section */}
             <section>
               <h2 className="text-4xl font-bold mb-8 text-center text-black">All Courses</h2>
-            
-              {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-4 md:gap-8 px-4 md:px-0">
-                {filteredCourses.map((course) => (
-                  /* Each course item: Ensures correct width on mobile, normal on desktop */
-                  <div key={course.id} className="min-w-[80%] sm:min-w-[45%] md:min-w-0">
+
+              {/* Added horizontal scrolling for mobile, keeping desktop layout same */}
+              <div className="overflow-x-auto md:overflow-visible px-4 md:px-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 min-w-max md:min-w-0">
+                  {filteredCourses.map((course) => (
                     <CourseCard
+                      key={course.id}
                       course={course}
                       isHovered={hoveredAllCourse}
                       setHovered={setHoveredAllCourse}
                     />
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
           </div>
