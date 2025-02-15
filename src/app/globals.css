@@ -14,11 +14,11 @@ body {
 
 @media (max-width: 640px) {
   .course-card {
-    transform: scale(0.7); /* Shrinks the card */
-    width: 30%; /* Adjusts the width */
-    height: 30%; /* Ensures it maintains proportions */
+    transform: scale(0.75); /* Shrink card size */
+    width: 40%; /* Adjust width */
   }
 }
+
 /* Custom scrollbar styles */
 .custom-scrollbar {
   scrollbar-width: thin;
