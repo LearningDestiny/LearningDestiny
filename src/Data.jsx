@@ -1067,7 +1067,7 @@ export const courses = [
     rating: 4.9,
     ratingCount: 250,
     price: "8,999 Rs",
-    imageUrl: "https://cdn.educba.com/academy/wp-content/uploads/2020/01/Deep-Learning.jpg",
+    imageUrl: "/CourseID10.jpeg",
     lastUpdated: "December 2024",
     duration: "120 hours",
     lectureCount: 45,
