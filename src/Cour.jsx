@@ -6,7 +6,6 @@ import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import EnrollmentForm from "../src/enrollpages/EnrollmentForm"
 import Filter from "../src/components/Filter"
-import { Menu, X } from "lucide-react" // Import icons for the mobile menu
 
 const Courses = () => {
   const [courses, setCourses] = useState([])
@@ -18,7 +17,6 @@ const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState(null)
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false); // State to control category dropdown visibility
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -68,10 +66,6 @@ const Courses = () => {
     e.preventDefault(); // Prevents page reload
     setSearchQuery(e.target.search.value); // Updates searchQuery correctly
   }
-
-  const toggleCategoryMenu = () => {
-    setIsCategoryOpen(!isCategoryOpen); //mobile view
-  };
   
   const handleCategoryChange = (category) => {
     const updatedCategories = selectedCategories.includes(category)
@@ -84,7 +78,7 @@ const Courses = () => {
     }
     router.push(`?${newSearchParams.toString()}`, undefined, { scroll: false });
   };
-
+  
   const filteredCourses = courses.filter((course) => {
     // Ensure course exists before accessing properties
     if (!course || !course.title) return false;
@@ -98,53 +92,6 @@ const Courses = () => {
 
     return matchesSearchQuery && matchesCategory;
   });
-
-  //Updated code for mobile
-  return (
-    <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
-      <div className="container mx-auto flex flex-col py-12 px-4 md:px-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold text-center text-black">All Courses</h2>
-
-          {/* Mobile category filter button */}
-          <button onClick={toggleCategoryMenu} className="md:hidden">
-            {isCategoryOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Dropdown for categories (Mobile only) */}
-        {isCategoryOpen && (
-          <div className="absolute top-16 left-0 w-full bg-white shadow-lg p-4 md:hidden">
-            <h3 className="text-lg font-semibold mb-2">Categories</h3>
-            <div className="flex flex-col space-y-2">
-              {["Web Development", "Programming", "Data Science", "Artificial Intelligence","CSS and Design","Python"].map((category) => (
-                <label key={category} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    checked={selectedCategories.includes(category)}
-                    onChange={() => handleCategoryChange(category)}
-                    className="w-4 h-4"
-                  />
-                  <span className="text-sm font-medium text-black">{category}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-        )}
-        
-{/*   const filteredCourses = courses.filter((course) => {
-    // Ensure course exists before accessing properties
-    if (!course || !course.title) return false;
-
-    const matchesSearchQuery =
-      searchQuery === "" || course.title.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesCategory =
-      selectedCategories.length === 0 ||
-      (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
-
-    return matchesSearchQuery && matchesCategory;
-  }); */}
 
   const CourseCard = ({ course, isHovered, setHovered, isPopular }) => (
     <div
