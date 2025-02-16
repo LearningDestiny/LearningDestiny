@@ -214,12 +214,9 @@ const Courses = () => {
             <section className="flex flex-col lg:flex-row">
               {/* Main Content Section */}
               <div className="lg:w-3/4">
-                {/* <div className="flex flex-col items-center justify-between mb-6"> */}
-                <div className="relative flex items-center justify-center mb-6 w-full px-2 sm:px-0">
+                <div className="flex flex-col items-center justify-between mb-6">
                   <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
-                  <div className="absolute right-0 top-0 mt-6">
                   <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
-                </div>
                 </div>
 
                 {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
