@@ -214,8 +214,8 @@ const Courses = () => {
             <section className="flex flex-col lg:flex-row">
               {/* Main Content Section */}
               <div className="lg:w-3/4">
-                <div className="flex flex-col items-center justify-between mb-6">
-                  <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-3xl font-bold mb-6 text-black">All Courses</h2>
                   <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
                 </div>
 
@@ -239,7 +239,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section - Desktop View */}
-          <div className="lg:w-1/4 filter-section">
+          <div className="lg:w-1/4 sm:hidden">
             <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
         </div>
