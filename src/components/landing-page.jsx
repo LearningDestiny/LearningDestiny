@@ -733,8 +733,8 @@ function CallToAction() {
               </p>
             </div>
             <p className="text-black text-sm mt-2 max-w-[250px]">
-              For Websites, Apps, Student Events, Summer Internships, Research Papers, Mini & Major Projects and end-to-end marketing services, Contact us @ +91
-              9059898900
+              For Websites, Apps, Student Events, Summer Internships, Research Papers, Mini & Major Projects and end-to-end marketing services,
+              Contact us @ +91 9059898900
             </p>
           </div>
           {/* </div> */}
@@ -749,7 +749,7 @@ function CallToAction() {
                 </li>
                 <li>
                   <Link href="/Login" className="text-black hover:text-blue-700 transition-colors duration-300">
-                    login
+                    Login
                   </Link>
                 </li>
               </ul>
