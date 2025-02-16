@@ -85,6 +85,20 @@ const Courses = () => {
     router.push(`?${newSearchParams.toString()}`, undefined, { scroll: false });
   };
 
+  const filteredCourses = courses.filter((course) => {
+    // Ensure course exists before accessing properties
+    if (!course || !course.title) return false;
+
+    const matchesSearchQuery =
+      searchQuery === "" || course.title.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
+
+    return matchesSearchQuery && matchesCategory;
+  });
+
   //Updated code for mobile
   return (
     <div className="min-h-screen flex flex-col bg-blue-100 from-gray-900 text-gray-100">
@@ -118,7 +132,7 @@ const Courses = () => {
           </div>
         )}
         
-  const filteredCourses = courses.filter((course) => {
+{/*   const filteredCourses = courses.filter((course) => {
     // Ensure course exists before accessing properties
     if (!course || !course.title) return false;
 
@@ -130,7 +144,7 @@ const Courses = () => {
       (course.categories && selectedCategories.some((category) => course.categories.includes(category)));
 
     return matchesSearchQuery && matchesCategory;
-  });
+  }); */}
 
   const CourseCard = ({ course, isHovered, setHovered, isPopular }) => (
     <div
