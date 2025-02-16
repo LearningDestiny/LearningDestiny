@@ -8,7 +8,7 @@ const MobileMenu = ({ selectedCategories, handleCategoryChange }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="lg:hidden">
+    <div className="relative lg:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center text-black ml-2"
@@ -17,7 +17,7 @@ const MobileMenu = ({ selectedCategories, handleCategoryChange }) => {
         <FaBars className="w-6 h-6" />
       </button>
       {isOpen && (
-        <div className="absolute left-0 bg-white shadow-md z-50 mt-2 w-full">
+        <div className="absolute left-0 bg-white shadow-md z-50 mt-2 w-[90%] p-4 rounded-lg">
           <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
         </div>
       )}
