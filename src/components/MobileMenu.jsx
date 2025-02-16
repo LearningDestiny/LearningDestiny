@@ -17,7 +17,7 @@ const MobileMenu = ({ selectedCategories, handleCategoryChange }) => {
         <FaBars className="w-6 h-6" />
       </button>
       {isOpen && (
-        <div className="absolute left-0 right-0 bg-white shadow-md z-50 mt-2 w-90">
+        <div className="absolute left-0 right-0 bg-white shadow-md z-50 mt-2">
           <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
         </div>
       )}
