@@ -23,6 +23,18 @@ body {
   }
 }
 
+/* Custom CSS to ensure the filter section is hidden on mobile devices and shown on larger screens */
+.filter-section {
+  display: none; /* Hide by default */
+}
+
+@media (min-width: 1024px) {
+  .filter-section {
+    display: block; /* Show on large screens and above */
+  }
+}
+
+
 /* Custom scrollbar styles */
 .custom-scrollbar {
   scrollbar-width: thin;
