@@ -8,7 +8,7 @@ export const courses = [
     rating: 4.1,
     ratingCount: 75,
     price: "6,999 Rs",
-    img src:"./CourseID1.jpeg",
+    imageUrl: "./CourseID2.jpeg",
     lastUpdated: "June 2024",
     duration: "80 hours",
     lectureCount: 15,
