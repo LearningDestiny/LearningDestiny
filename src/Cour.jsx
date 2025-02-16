@@ -68,7 +68,7 @@ const Courses = () => {
     e.preventDefault(); // Prevents page reload
     setSearchQuery(e.target.search.value); // Updates searchQuery correctly
   }
-  
+
   const handleCategoryChange = (category) => {
     const updatedCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((cat) => cat !== category)
@@ -80,7 +80,7 @@ const Courses = () => {
     }
     router.push(`?${newSearchParams.toString()}`, undefined, { scroll: false });
   };
-  
+
   const filteredCourses = courses.filter((course) => {
     // Ensure course exists before accessing properties
     if (!course || !course.title) return false;
@@ -210,32 +210,36 @@ const Courses = () => {
               </section>
             )}
             {/* All Courses Section */}
-            <section>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
-              <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
-              </div>
+            {/* <section> */}
+            <section className="flex flex-col lg:flex-row">
+              {/* Main Content Section */}
+              <div className="lg:w-3/4">
+                <div className="flex flex-col items-center justify-between mb-6">
+                  <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
+                  <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
+                </div>
 
-              {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
-              {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"> */}
-              <div className="grid grid-cols-2 gap-1 px-2 sm:px-0 md:grid-cols-3 md:gap-8 md:px-0">
-                {filteredCourses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="w-full max-w-[120px] sm:max-w-none course-card"
-                  >
-                    <CourseCard
-                      course={course}
-                      isHovered={hoveredAllCourse}
-                      setHovered={setHoveredAllCourse}
-                    />
-                  </div>
-                ))}
+                {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
+                {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"> */}
+                <div className="grid grid-cols-2 gap-1 px-2 sm:px-0 md:grid-cols-3 md:gap-8 md:px-0">
+                  {filteredCourses.map((course) => (
+                    <div
+                      key={course.id}
+                      className="w-full max-w-[120px] sm:max-w-none course-card"
+                    >
+                      <CourseCard
+                        course={course}
+                        isHovered={hoveredAllCourse}
+                        setHovered={setHoveredAllCourse}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           </div>
           {/* Filter Section - Desktop View */}
-          <div className="lg:w-1/4 hidden lg:block">
+          <div className="lg:w-1/4 sm:hidden">
             <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
         </div>
