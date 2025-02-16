@@ -8,7 +8,7 @@ const MobileMenu = ({ selectedCategories, handleCategoryChange }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="lg:hidden">
+    <div className="relative lg:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center text-black ml-2"
