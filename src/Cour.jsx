@@ -215,7 +215,7 @@ const Courses = () => {
               {/* Main Content Section */}
               <div className="lg:w-3/4">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-3xl font-bold text-black flex-1 text-center">All Courses</h2>
+                  <h2 className="text-3xl font-bold text-black">All Courses</h2>
                   <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
                 </div>
 
