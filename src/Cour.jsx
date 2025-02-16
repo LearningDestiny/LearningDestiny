@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import EnrollmentForm from "../src/enrollpages/EnrollmentForm"
 import Filter from "../src/components/Filter"
+import MobileMenu from "../src/components/MobileMenu"
+
 
 const Courses = () => {
   const [courses, setCourses] = useState([])
@@ -209,7 +211,10 @@ const Courses = () => {
             )}
             {/* All Courses Section */}
             <section>
+            <div className="flex items-center justify-between mb-6">
               <h2 className="text-3xl font-bold mb-6 text-center text-black">All Courses</h2>
+              <MobileMenu selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
+              </div>
 
               {/* Container: Enables horizontal scrolling on mobile, grid layout on desktop */}
               {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4"> */}
@@ -230,7 +235,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section - Desktop View */}
-          <div className="lg:w-1/4">
+          <div className="lg:w-1/4 hidden lg:block">
             <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
         </div>
