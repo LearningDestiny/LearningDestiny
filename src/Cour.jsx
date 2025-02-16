@@ -239,7 +239,7 @@ const Courses = () => {
             </section>
           </div>
           {/* Filter Section - Desktop View */}
-          <div className="lg:w-1/4 sm:hidden">
+          <div className="lg:w-1/4 filter-section">
             <Filter selectedCategories={selectedCategories} handleCategoryChange={handleCategoryChange} />
           </div>
         </div>
