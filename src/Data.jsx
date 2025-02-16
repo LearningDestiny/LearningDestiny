@@ -151,7 +151,7 @@ export const courses = [
     rating: 3.9,
     ratingCount: 150,
     price: "4,999 Rs",
-    imageUrl: "./CourseID03.jpg",
+    imageUrl: "https://media.licdn.com/dms/image/D4D12AQGwFBk-2Q0b2g/article-cover_image-shrink_600_2000/0/1657533146499?e=2147483647&v=beta&t=TCnqljBnc_m3DA07XYqRF5Fb_NRBpKMyJcR3uo-DfWc",
     lastUpdated: "May 2024",
     duration: "60 hours",
     lectureCount: 25,
