@@ -1718,7 +1718,7 @@ export const events = [
     "date": "December 5-7, 2024",
     "location": "Online",
     "price": "1,999 Rs",
-    "imageUrl": "https://media.geeksforgeeks.org/wp-content/uploads/20231205165904/web-development-image.webp",
+    "imageUrl": "/Web Development Event.jpeg",
     "description": "A 3-day bootcamp to master the fundamentals of web development.",
     "agenda": [
       {
@@ -1805,7 +1805,7 @@ export const internships = [
     "location": "Remote",
     "duration": "4 months",
     "stipend": "15,000 Rs/month",
-    "imageUrl": "https://www.peoplenpartners.com/img/article/52.png",
+    "imageUrl": "https://academy.skillgenic.in/wp-content/uploads/2020/07/1340caf6112d8998a65f47bbc026.png",
     "lastUpdated": "January 2025",
     "description": "Collaborate with the design team to create engaging visuals for various projects.",
     "requirements": [
