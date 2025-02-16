@@ -8,7 +8,7 @@ export const courses = [
     rating: 4.1,
     ratingCount: 75,
     price: "6,999 Rs",
-    imageUrl: "https://repository-images.githubusercontent.com/574161536/1c002254-32d8-48b5-a4de-c0ed1511f2ee",
+    imageUrl: "./CourseID1.jpeg",
     lastUpdated: "June 2024",
     duration: "80 hours",
     lectureCount: 15,
