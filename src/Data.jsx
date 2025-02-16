@@ -8,7 +8,7 @@ export const courses = [
     rating: 4.1,
     ratingCount: 75,
     price: "6,999 Rs",
-    imageUrl: "/https://drive.google.com/file/d/1pz_wOwpDPrKifRhHwWPHlag6C523B-Gt/view?usp=sharing",
+    imageUrl: "./CourseID1.jpeg",
     lastUpdated: "June 2024",
     duration: "80 hours",
     lectureCount: 15,
