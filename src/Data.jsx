@@ -1547,7 +1547,7 @@ export const workshops = [
     "rating": 4.8,
     "ratingCount": 120,
     "price": "2,999 Rs",
-    "imageUrl": "https://www.weblineindia.com/wp-content/uploads/2017/03/full-stack-development-by-weblineindia-2.jpg",
+    "imageUrl": "/Full stack.jpg",
     "lastUpdated": "September 2024",
     "duration": "40 hours",
     "lectureCount": 15,
