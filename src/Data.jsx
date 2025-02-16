@@ -8,7 +8,7 @@ export const courses = [
     rating: 4.1,
     ratingCount: 75,
     price: "6,999 Rs",
-    imageUrl: "./CourseID1.jpeg",
+    imageUrl: "/https://res.cloudinary.com/dhv1cp0hw/image/upload/v1739732129/vite_react_tailwind_ve6np7.png",
     lastUpdated: "June 2024",
     duration: "80 hours",
     lectureCount: 15,
