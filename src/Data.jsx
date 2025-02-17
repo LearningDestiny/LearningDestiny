@@ -1805,7 +1805,7 @@ export const internships = [
     "location": "Remote",
     "duration": "4 months",
     "stipend": "15,000 Rs/month",
-    "imageUrl": "https://academy.skillgenic.in/wp-content/uploads/2020/07/1340caf6112d8998a65f47bbc026.png",
+    "imageUrl": "https://learn.g2.com/hubfs/iStock-1191609321%20%281%29.jpg",
     "lastUpdated": "January 2025",
     "description": "Collaborate with the design team to create engaging visuals for various projects.",
     "requirements": [
