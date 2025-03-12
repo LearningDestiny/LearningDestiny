@@ -42,8 +42,7 @@ const App = () => {
           <meta name="author" content="Learning Destiny Pvt. Ltd." />
           <meta property="og:title" content="Learning Destiny | Transform Your Future" />
           <meta property="og:description" content="Enroll in top courses and advance your career." />
-          <meta name="robots" content="noindex">
-          <meta name="googlebot" content="noindex">
+          
         </Helmet>
         <div className={`App ${isDarkMode ? 'bg-gray-900 text-gray-200' : 'bg-white text-black'}`}>
           <Navbar />
