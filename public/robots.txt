@@ -1,5 +1,1 @@
-User-Agent: *
-Allow: /
-Disallow: /private/
-Sitemap: https://www.learningdestiny.in/sitemap.xml
-Host: https://www.learningdestiny.in
+
