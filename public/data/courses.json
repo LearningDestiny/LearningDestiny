@@ -127,6 +127,7 @@
       }
     ]
   },
+  
   {
     "courseId": 3,
     "id": 3,
@@ -1459,5 +1460,342 @@
         ]
       }
     ]
+  },
+  
+  {
+    "courseId": 15,
+    "id": 15,
+    "title": "Artificial Intelligence ",
+    "instructor": "",
+    "rating": 5.0,
+    "ratingCount": 300,
+    "price": "9,999 Rs",
+    "imageUrl": "/CourseID15.jpg",
+    "lastUpdated": "October 2024",
+    "duration": "4 months - 60 mins per class - Hybrid format (online or offline)",
+    "lectureCount": 40,
+    "description": "A comprehensive course designed to equip learners with practical skills in Artificial Intelligence. Covers deep learning, NLP, computer vision, and AI deployment with hands-on projects and real-world applications. ",
+    "categories": ["Artificial Intelligence"],
+    "highlights": [
+      "Real-world AI project with mentorship",
+      "Hands-on experience with AI frameworks (TensorFlow, PyTorch)",
+      "Internship letter upon completion",
+      "Career guidance and portfolio building "
+      
+    ],
+    "roadmap": [
+      {
+        "month": "Month 1",
+        "weeks": [
+          {
+            "week": "Week 1: Introduction to Data Science",
+            "topics": [
+              "Overview of Data Science",
+              "Setting up the Python Environment",
+              "Introduction to Pandas and NumPy"
+            ]
+          },
+          {
+            "week": "Week 2: Data Wrangling with Pandas",
+            "topics": [
+              "Data Cleaning Techniques",
+              "Working with DataFrames",
+              "Handling Missing Data"
+            ]
+          },
+          {
+            "week": "Week 3: Data Visualization",
+            "topics": [
+              "Introduction to Matplotlib",
+              "Visualizing Data with Seaborn",
+              "Creating Plots and Charts"
+            ]
+          },
+          {
+            "week": "Week 4: Exploratory Data Analysis (EDA)",
+            "topics": [
+              "Understanding EDA",
+              "Using Pandas for EDA",
+              "Building an EDA Report"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 2",
+        "weeks": [
+          {
+            "week": "Week 1: Machine Learning with Scikit-Learn",
+            "topics": [
+              "Introduction to Machine Learning",
+              "Understanding Supervised and Unsupervised Learning",
+              "Building and Evaluating Models with Scikit-Learn"
+            ]
+          },
+          {
+            "week": "Week 2: Working with Databases",
+            "topics": [
+              "Introduction to SQL",
+              "Working with SQLite and PostgreSQL",
+              "Connecting Python to Databases"
+            ]
+          },
+          {
+            "week": "Week 3: Advanced Data Science Techniques",
+            "topics": [
+              "Time Series Analysis",
+              "Text Mining and NLP",
+              "Building Predictive Models"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 3",
+        "weeks": [
+          {
+            "week": "Week 1: Project: Building a Data Science Pipeline",
+            "topics": [
+              "Collecting and Cleaning Data",
+              "Analyzing and Visualizing Data",
+              "Building and Deploying a Machine Learning Model"
+            ]
+          },
+          {
+            "week": "Week 2: Final Project Presentation",
+            "topics": [
+              "Preparing the Project Report",
+              "Presenting the Project",
+              "Receiving Feedback and Final Review"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseId": 16,
+    "id": 16,
+    "title": "Data Science",
+    "instructor": "",
+    "rating": 5.0,
+    "ratingCount": 300,
+    "price": "7,999 Rs",
+    "imageUrl": "/CourseID16.jpg",
+    "lastUpdated": "October 2024",
+    "duration": "4 months - 60 mins per class - Hybrid format (online or offline)",
+    "lectureCount": 40,
+    "description": "A comprehensive course designed to equip learners with practical skills in Artificial Intelligence. Covers deep learning, NLP, computer vision, and AI deployment with hands-on projects and real-world applications. ",
+    "categories": ["Data Science"],
+    "highlights": [
+      "Hands-on project with real-world datasets",
+      "Tools: Python, SQL, Power BI, and Tableau",
+      "Internship letter upon completion",
+      "Guidance on creating a portfolio "
+      
+    ],
+    "roadmap": [
+      {
+        "month": "Month 1",
+        "weeks": [
+          {
+            "week": "Week 1: Introduction to Data Science",
+            "topics": [
+              "Overview of Data Science",
+              "Setting up the Python Environment",
+              "Introduction to Pandas and NumPy"
+            ]
+          },
+          {
+            "week": "Week 2: Data Wrangling with Pandas",
+            "topics": [
+              "Data Cleaning Techniques",
+              "Working with DataFrames",
+              "Handling Missing Data"
+            ]
+          },
+          {
+            "week": "Week 3: Data Visualization",
+            "topics": [
+              "Introduction to Matplotlib",
+              "Visualizing Data with Seaborn",
+              "Creating Plots and Charts"
+            ]
+          },
+          {
+            "week": "Week 4: Exploratory Data Analysis (EDA)",
+            "topics": [
+              "Understanding EDA",
+              "Using Pandas for EDA",
+              "Building an EDA Report"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 2",
+        "weeks": [
+          {
+            "week": "Week 1: Machine Learning with Scikit-Learn",
+            "topics": [
+              "Introduction to Machine Learning",
+              "Understanding Supervised and Unsupervised Learning",
+              "Building and Evaluating Models with Scikit-Learn"
+            ]
+          },
+          {
+            "week": "Week 2: Working with Databases",
+            "topics": [
+              "Introduction to SQL",
+              "Working with SQLite and PostgreSQL",
+              "Connecting Python to Databases"
+            ]
+          },
+          {
+            "week": "Week 3: Advanced Data Science Techniques",
+            "topics": [
+              "Time Series Analysis",
+              "Text Mining and NLP",
+              "Building Predictive Models"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 3",
+        "weeks": [
+          {
+            "week": "Week 1: Project: Building a Data Science Pipeline",
+            "topics": [
+              "Collecting and Cleaning Data",
+              "Analyzing and Visualizing Data",
+              "Building and Deploying a Machine Learning Model"
+            ]
+          },
+          {
+            "week": "Week 2: Final Project Presentation",
+            "topics": [
+              "Preparing the Project Report",
+              "Presenting the Project",
+              "Receiving Feedback and Final Review"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "courseId": 17,
+    "id": 17,
+    "title": " Machine Learning",
+    "instructor": "",
+    "rating": 5.0,
+    "ratingCount": 300,
+    "price": "5,999 Rs",
+    "imageUrl": "/CourseID17.jpg",
+    "lastUpdated": "October 2024",
+    "duration": "3 months - 60 mins per class - Hybrid format (online or offline) ",
+    "lectureCount": 40,
+    "description": "A focused course covering core machine learning concepts, algorithms, and model deployment. Gain practical experience with real-world datasets and build production-ready ML models. ",
+    "categories": ["Programming"],
+    "highlights": [
+      "Hands-on ML project with real data ",
+      "Tools: Scikit-Learn, Python ",
+      "Internship letter upon completion ",
+      "Guidance on ML model deployment  "
+      
+    ],
+    "roadmap": [
+      {
+        "month": "Month 1",
+        "weeks": [
+          {
+            "week": "Week 1: Introduction to Data Science",
+            "topics": [
+              "Overview of Data Science",
+              "Setting up the Python Environment",
+              "Introduction to Pandas and NumPy"
+            ]
+          },
+          {
+            "week": "Week 2: Data Wrangling with Pandas",
+            "topics": [
+              "Data Cleaning Techniques",
+              "Working with DataFrames",
+              "Handling Missing Data"
+            ]
+          },
+          {
+            "week": "Week 3: Data Visualization",
+            "topics": [
+              "Introduction to Matplotlib",
+              "Visualizing Data with Seaborn",
+              "Creating Plots and Charts"
+            ]
+          },
+          {
+            "week": "Week 4: Exploratory Data Analysis (EDA)",
+            "topics": [
+              "Understanding EDA",
+              "Using Pandas for EDA",
+              "Building an EDA Report"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 2",
+        "weeks": [
+          {
+            "week": "Week 1: Machine Learning with Scikit-Learn",
+            "topics": [
+              "Introduction to Machine Learning",
+              "Understanding Supervised and Unsupervised Learning",
+              "Building and Evaluating Models with Scikit-Learn"
+            ]
+          },
+          {
+            "week": "Week 2: Working with Databases",
+            "topics": [
+              "Introduction to SQL",
+              "Working with SQLite and PostgreSQL",
+              "Connecting Python to Databases"
+            ]
+          },
+          {
+            "week": "Week 3: Advanced Data Science Techniques",
+            "topics": [
+              "Time Series Analysis",
+              "Text Mining and NLP",
+              "Building Predictive Models"
+            ]
+          }
+        ]
+      },
+      {
+        "month": "Month 3",
+        "weeks": [
+          {
+            "week": "Week 1: Project: Building a Data Science Pipeline",
+            "topics": [
+              "Collecting and Cleaning Data",
+              "Analyzing and Visualizing Data",
+              "Building and Deploying a Machine Learning Model"
+            ]
+          },
+          {
+            "week": "Week 2: Final Project Presentation",
+            "topics": [
+              "Preparing the Project Report",
+              "Presenting the Project",
+              "Receiving Feedback and Final Review"
+            ]
+          }
+        ]
+      }
+    ]
   }
+  
+  
+  
 ]
