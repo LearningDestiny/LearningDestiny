@@ -1505,16 +1505,262 @@ export const courses = [
         ]
       }
     ]
+  },
+
+  {
+    courseId:15,
+    id: 15,
+    title: "Artificial Intelligence",
+    //instructor: "Aditya Singh",
+    rating: 4.1,
+    ratingCount: 75,
+    price: "9,999 Rs",
+    imageUrl: "/CourseID15.jpg",
+    lastUpdated: "June 2024",
+    duration: " 60 mins per class - Hybrid format (online or offline) ",
+    lectureCount: 15,
+    description: "A comprehensive course designed to equip learners with practical skills in Artificial Intelligence.Covers deep learning, NLP, computer vision, and AI deployment with hands-on projects and real-world applications. ",
+    categories: ["Artificial Intelligence"],
+    highlights: [
+      'Real-world AI project with mentorship',
+      'Hands-on experience with AI frameworks (TensorFlow, PyTorch) ',
+      'Internship letter upon completion ',
+      'Career guidance and portfolio building ',
+    
+    ],
+    roadmap: [
+      {
+        month: "Month 1",
+        weeks: [
+          {
+            week: "AI Fundamentals",
+            topics: [
+              'Introduction to AI: Concepts and applications ',
+              'Python for AI (NumPy, Pandas, Matplotlib) ',
+              'Basic machine learning (regression, classification)',
+            ]
+          }
+        //  {
+        //     week: "Week 2: React Basics",
+        //     topics: [
+        //       'Create React App',
+        //       'JSX (JavaScript Syntax Extension)',
+        //       'Props',
+        //       'Handling States / useState Hook',
+        //     ]
+        //   },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 2",
+        weeks: [
+          {
+            week: " Deep Learning Basics",
+            topics: [
+              'Neural networks and activation functions',
+              'Backpropagation and optimization',
+              'TensorFlow and PyTorch basics ',
+            ]
+          },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 3",
+        weeks: [
+          {
+            week: "NLP and Computer Vision",
+            topics: [
+              'NLP: Tokenization, embeddings, sentiment analysis ',
+              'Computer Vision: Image processing, CNNs, object detection ',
+              //'Utilizing React Router for navigation',
+              //'Fetching and displaying data from APIs',
+            ]
+          }
+        ]
+      },
+      {
+        month: "Month 4",
+        weeks: [
+          {
+            week: "AI Deployment and Project",
+            topics: [
+              'Model deployment using Flask/Streamlit  ',
+              'AI project with end-to-end implementation',
+              'Presentation and review',
+              //'Fetching and displaying data from APIs',
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    courseId:16,
+    id: 16,
+    title: " Data Science",
+    //instructor: "Aditya Singh",
+    rating: 4.1,
+    ratingCount: 75,
+    price: "7,999 Rs",
+    imageUrl: "/CourseID16.jpg",
+    lastUpdated: "June 2024",
+    duration: " 60 mins per class - Hybrid format (online or offline) ",
+    lectureCount: 15,
+    description: "An in-depth course focusing on data analysis, visualization, and predictive modeling. Learn Pyton, SQL, and industry-standard tools like Power BI and Tableau, with hands-on projects to build a strong portfolio.",
+    categories: ["Data Science", "Pyton"],
+    highlights: [
+      'Hands-on project with real-world datasets',
+      'Tools: Python, SQL, Power BI, and Tableau  ',
+      'Internship letter upon completion',
+      'Guidance on creating a portfolio ',
+    
+    ],
+    roadmap: [
+      {
+        month: "Month 1",
+        weeks: [
+          {
+            week: " Data Science Foundations",
+            topics: [
+              'Introduction to data science  ',
+              'Python programming (data structures, libraries) ',
+              'Data manipulation with Pandas and NumPy',
+            ]
+          }
+        //  {
+        //     week: "Week 2: React Basics",
+        //     topics: [
+        //       'Create React App',
+        //       'JSX (JavaScript Syntax Extension)',
+        //       'Props',
+        //       'Handling States / useState Hook',
+        //     ]
+        //   },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 2",
+        weeks: [
+          {
+            week: " Data Visualization ",
+            topics: [
+              'Matplotlib, Seaborn, Plotly',
+              'Power BI and Tableau basics',
+              'Exploratory Data Analysis (EDA)  ',
+            ]
+          },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 3",
+        weeks: [
+          {
+            week: "Statistics and Predictive Modeling",
+            topics: [
+              'Descriptive and inferential statistics ',
+              'Linear and logistic regression  ',
+              'Model evaluation techniques',
+              //'Fetching and displaying data from APIs',
+            ]
+          }
+        ]
+      },
+      {
+        month: "Month 4",
+        weeks: [
+          {
+            week: "Project and Presentation",
+            topics: [
+              'Real-world data science project  ',
+              'Data cleaning, modeling, and visualization ',
+              'Presentation and feedback',
+              //'Fetching and displaying data from APIs',
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    courseId:17,
+    id: 17,
+    title: "Machine Learning",
+    //instructor: "Aditya Singh",
+    rating: 4.1,
+    ratingCount: 75,
+    price: "5,999 Rs",
+    imageUrl: "/CourseID16.jpg",
+    lastUpdated: "June 2024",
+    duration: " 3 months - 60 mins per class - Hybrid format (online or offline)  ",
+    lectureCount: 15,
+    description: "A focused course covering core machine learning concepts, algorithms, and model deployment. Gain practical experience with real-world datasets and build production-ready ML models.",
+    categories: ["Programming"],
+    highlights: [
+      'Hands-on ML project with real data',
+      'Tools: Scikit-Learn, Python  ',
+      'Internship letter upon completion',
+      'Guidance on ML model deployment  ',
+    
+    ],
+    roadmap: [
+      {
+        month: "Month 1",
+        weeks: [
+          {
+            week: " ML Basics",
+            topics: [
+              'Introduction to machine learning ',
+              'Python programming for ML ',
+              'Supervised vs unsupervised learning',
+            ]
+          }
+        //  {
+        //     week: "Week 2: React Basics",
+        //     topics: [
+        //       'Create React App',
+        //       'JSX (JavaScript Syntax Extension)',
+        //       'Props',
+        //       'Handling States / useState Hook',
+        //     ]
+        //   },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 2",
+        weeks: [
+          {
+            week: "ML Algorithms",
+            topics: [
+              'Linear regression, logistic regression',
+              'Decision trees, random forests',
+              'K-means clustering, SVM ',
+            ]
+          },
+          // Add more weeks as needed
+        ]
+      },
+      {
+        month: "Month 3",
+        weeks: [
+          {
+            week: " Project and Model Deployment",
+            topics: [
+              'Real-world ML project ',
+              'Model evaluation and optimization  ',
+              'Deployment using Flask/Streamlit ',
+             'Presentation and feedback ',
+            ]
+          }
+        ]
+      }
+     ]
   }
-  
-
-
-
-  
-  
-  
-  
-  
   
 ];
 
