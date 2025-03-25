@@ -9,14 +9,14 @@ module.exports = {
    
       const dynamicRoutes = [
         "https://learningdestiny.in/", // Home page
-        "https://learningdestiny.in/Courses", // Example services page
-        "https://learningdestiny.in/Events",
-        "https://learningdestiny.in/workshop",
-        "https://learningdestiny.in/inten",
-        "https://learningdestiny.in/Careers",
-        "https://learningdestiny.in/sign-in",
-        "https://learningdestiny.in/graduate-roles",
-        "https://learningdestiny.in/Login",
+        //"https://learningdestiny.in/Courses", // Example services page
+        //"https://learningdestiny.in/Events",
+        //"https://learningdestiny.in/workshop",
+        //"https://learningdestiny.in/inten",
+        //"https://learningdestiny.in/Careers",
+        //"https://learningdestiny.in/sign-in",
+        //"https://learningdestiny.in/graduate-roles",
+        //"https://learningdestiny.in/Login",
       
       ]; // Base dynamic routes
    
